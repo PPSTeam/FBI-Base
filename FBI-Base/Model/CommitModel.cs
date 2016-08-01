@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class CommitModel : ICRUDModel<Commit>
+  public class CommitModel : ICRUDModel<Commit>
   {
     static CommitModel s_instance = new CommitModel();
     public static CommitModel Instance { get { return (s_instance); } }

@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class FactLogModel
+  public class FactLogModel
   {
     static FactLogModel s_instance = new FactLogModel();
     public static FactLogModel Instance { get { return (s_instance); } }

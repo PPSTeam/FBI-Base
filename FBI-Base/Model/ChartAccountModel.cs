@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class ChartAccountModel : ICRUDModel<ChartAccount>
+  public class ChartAccountModel : ICRUDModel<ChartAccount>
   {
     static ChartAccountModel s_instance = new ChartAccountModel();
     public static ChartAccountModel Instance { get { return (s_instance); } }

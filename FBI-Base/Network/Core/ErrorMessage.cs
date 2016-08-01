@@ -19,7 +19,7 @@
     CIRCULAR_DEP
   };
 
-  static class Error
+  static public class Error
   {
     static SafeDictionary<ErrorMessage, string> m_messageList = null;
 

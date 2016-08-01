@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class FilterValueModel : ICRUDModel<FilterValue>
+  public class FilterValueModel : ICRUDModel<FilterValue>
   {
     static FilterValueModel s_instance = new FilterValueModel();
     public static FilterValueModel Instance { get { return (s_instance); } }

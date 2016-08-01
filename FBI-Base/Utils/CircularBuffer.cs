@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FBI.Utils
 {
-  class CircularBuffer<T>
+  public class CircularBuffer<T>
   {
     T[] m_buffer;
     int m_cursor;

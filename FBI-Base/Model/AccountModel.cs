@@ -9,7 +9,7 @@ namespace FBI.MVC.Model
   using CRUD;
   using Network;
 
-  class AccountModel : NamedCRUDModel<Account>
+  public class AccountModel : NamedCRUDModel<Account>
   {
     static AccountModel s_instance = new AccountModel();
     public static AccountModel Instance { get { return (s_instance); } }

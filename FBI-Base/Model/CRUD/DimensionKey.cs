@@ -13,7 +13,7 @@ namespace FBI.MVC.Model.CRUD
   using PeriodKey = Int32;
 
 
-  class DimensionKey
+  public class DimensionKey
   {
     Tuple<EntityKey, AccountKey, EmployeeKey, PeriodKey> m_key;
     public UInt32 EntityId { get { return (m_key.Item1); } }

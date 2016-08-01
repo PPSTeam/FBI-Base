@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class ChartPanelModel : NamedCRUDModel<ChartPanel>
+  public class ChartPanelModel : NamedCRUDModel<ChartPanel>
   {
     static ChartPanelModel s_instance = new ChartPanelModel();
     public static ChartPanelModel Instance { get { return (s_instance); } }

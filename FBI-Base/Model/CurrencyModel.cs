@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class CurrencyModel : NamedCRUDModel<Currency>
+  public class CurrencyModel : NamedCRUDModel<Currency>
   {
     static CurrencyModel s_instance = new CurrencyModel();
     public static CurrencyModel Instance { get { return (s_instance); } }

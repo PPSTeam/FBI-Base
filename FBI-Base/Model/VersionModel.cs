@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class VersionModel : NamedCRUDModel<Version>
+  public class VersionModel : NamedCRUDModel<Version>
   {
     static VersionModel s_instance = new VersionModel();
     public static VersionModel Instance { get { return (s_instance); } }

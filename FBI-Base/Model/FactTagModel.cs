@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class FactTagModel : SimpleCRUDModel<FactTag>
+  public class FactTagModel : SimpleCRUDModel<FactTag>
   {
     static FactTagModel s_instance = new FactTagModel();
     public static FactTagModel Instance { get { return (s_instance); } }

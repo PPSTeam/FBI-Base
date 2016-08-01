@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Utils;
   using Network;
 
-  class AxisFilterModel : ICRUDModel<AxisFilter>
+  public class AxisFilterModel : ICRUDModel<AxisFilter>
   {
     protected SortedDictionary<AxisType, MultiIndexDictionary<UInt32, Tuple<UInt32, UInt32>, AxisFilter>> m_axisFilterDictionary =
       new SortedDictionary<AxisType, MultiIndexDictionary<UInt32, Tuple<UInt32, UInt32>, AxisFilter>>();

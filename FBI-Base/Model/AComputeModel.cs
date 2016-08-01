@@ -9,7 +9,7 @@ namespace FBI.MVC.Model
   using CRUD;
   using Network;
 
-  abstract class AComputeModel
+  abstract public class AComputeModel
   {
     protected SafeDictionary<AComputeRequest, SafeDictionary<UInt32, ComputeResult>> m_resultDic;
     protected List<Tuple<AComputeRequest, List<Int32>>> m_requestList;

@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class AxisConfigurationModel : SimpleCRUDModel<AxisConfiguration>
+  public class AxisConfigurationModel : SimpleCRUDModel<AxisConfiguration>
   {
     static AxisConfigurationModel s_instance = new AxisConfigurationModel();
     public static AxisConfigurationModel Instance { get { return (s_instance); } }

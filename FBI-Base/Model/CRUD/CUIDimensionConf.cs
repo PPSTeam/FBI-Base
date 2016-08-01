@@ -26,7 +26,7 @@ namespace FBI.MVC.Model.CRUD
     }
   }
 
-  class FilterConf : CUIDimensionConf
+  public class FilterConf : CUIDimensionConf
   {
     public FilterConf(UInt32 p_filterId) : base(typeof(FilterModel)) { FilterId = p_filterId; }
     public UInt32 FilterId { get; set; }
@@ -39,7 +39,7 @@ namespace FBI.MVC.Model.CRUD
     }
   }
 
-  class AxisElemConf : CUIDimensionConf
+  public class AxisElemConf : CUIDimensionConf
   {
     public AxisElemConf(AxisType p_axisType) : base(typeof(AxisElemModel)) 
     {
@@ -57,7 +57,7 @@ namespace FBI.MVC.Model.CRUD
     }
   }
 
-  class PeriodConf : CUIDimensionConf
+  public class PeriodConf : CUIDimensionConf
   {
     public PeriodConf(TimeConfig p_config) : base(typeof(PeriodModel)) 
     {
@@ -80,7 +80,7 @@ namespace FBI.MVC.Model.CRUD
     }
   }
 
-  class VersionConf : CUIDimensionConf
+  public class VersionConf : CUIDimensionConf
   {
     public VersionConf(UInt32 p_version1, UInt32 p_version2 = 0) : base(typeof(VersionModel))
     {

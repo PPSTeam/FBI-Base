@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class FilterModel : AxedCRUDModel<Filter>
+  public class FilterModel : AxedCRUDModel<Filter>
   {
     static FilterModel s_instance = new FilterModel();
     public static FilterModel Instance { get { return (s_instance); } }

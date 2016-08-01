@@ -9,7 +9,7 @@ namespace FBI.Utils
   using MVC.Model.CRUD;
   using MVC.Model;
 
-  class PeriodUtils
+  public class PeriodUtils
   {
     public static SafeDictionary<int, string> ToList(List<int> p_periods, TimeConfig p_time)
     {

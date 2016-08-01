@@ -9,7 +9,7 @@ namespace FBI.MVC.Model
   using Network;
   using CRUD;
 
-  class SourcedComputeModel : AComputeModel
+  public class SourcedComputeModel : AComputeModel
   {
     public event ComputeCompleteEventHandler ComputeCompleteEvent;
     public delegate void ComputeCompleteEventHandler(ErrorMessage p_status, SourcedComputeRequest p_request, SafeDictionary<UInt32, ComputeResult> p_result);

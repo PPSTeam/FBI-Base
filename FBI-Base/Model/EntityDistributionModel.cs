@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class EntityDistributionModel : ICRUDModel<EntityDistribution>
+  public class EntityDistributionModel : ICRUDModel<EntityDistribution>
   {
     static EntityDistributionModel s_instance = new EntityDistributionModel();
     public static EntityDistributionModel Instance { get { return (s_instance); } }

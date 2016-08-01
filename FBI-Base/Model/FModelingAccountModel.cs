@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class FModelingAccountModel : NamedCRUDModel<FModelingAccount>
+  public class FModelingAccountModel : NamedCRUDModel<FModelingAccount>
   {
     static FModelingAccountModel s_instance = new FModelingAccountModel();
     public static FModelingAccountModel Instance { get { return (s_instance); } }

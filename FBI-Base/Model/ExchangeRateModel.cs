@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class ExchangeRateModel : ICRUDModel<ExchangeRate>
+  public class ExchangeRateModel : ICRUDModel<ExchangeRate>
   {
     static ExchangeRateModel s_instance = new ExchangeRateModel();
     public static ExchangeRateModel Instance { get { return (s_instance); } }

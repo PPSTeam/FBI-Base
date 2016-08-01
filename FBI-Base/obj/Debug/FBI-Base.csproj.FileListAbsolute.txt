@@ -1,7 +1,0 @@
-C:\Users\ertyw\Documents\FBI-Model\FBI-Model\obj\Debug\FBI-Base.csprojResolveAssemblyReference.cache
-C:\Users\ertyw\Documents\FBI-Model\FBI-Model\bin\Debug\FBI-Base.dll
-C:\Users\ertyw\Documents\FBI-Model\FBI-Model\bin\Debug\FBI-Base.pdb
-C:\Users\ertyw\Documents\FBI-Model\FBI-Model\bin\Debug\DotNetZip.dll
-C:\Users\ertyw\Documents\FBI-Model\FBI-Model\bin\Debug\DotNetZip.xml
-C:\Users\ertyw\Documents\FBI-Model\FBI-Model\obj\Debug\FBI-Base.dll
-C:\Users\ertyw\Documents\FBI-Model\FBI-Model\obj\Debug\FBI-Base.pdb

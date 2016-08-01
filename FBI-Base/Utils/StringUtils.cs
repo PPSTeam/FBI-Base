@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FBI.Utils
 {
-  static class StringUtils
+  static public class StringUtils
   {
     public static bool ContainChars(string p_strToCheck, string p_charList)
     {

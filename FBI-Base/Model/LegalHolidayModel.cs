@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class LegalHolidayModel : ICRUDModel<LegalHoliday>
+  public class LegalHolidayModel : ICRUDModel<LegalHoliday>
   {
     static LegalHolidayModel s_instance = new LegalHolidayModel();
     public static LegalHolidayModel Instance { get { return (s_instance); } }

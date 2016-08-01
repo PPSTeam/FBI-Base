@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class UserModel : NamedCRUDModel<User>
+  public class UserModel : NamedCRUDModel<User>
   {
     static UserModel s_instance = new UserModel();
     public static UserModel Instance { get { return (s_instance); } }

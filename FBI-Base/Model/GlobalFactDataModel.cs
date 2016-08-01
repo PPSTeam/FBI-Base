@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class GlobalFactDataModel : ICRUDModel<GlobalFactData>
+  public class GlobalFactDataModel : ICRUDModel<GlobalFactData>
   {
     static GlobalFactDataModel s_instance = new GlobalFactDataModel();
     public static GlobalFactDataModel Instance { get { return (s_instance); } }

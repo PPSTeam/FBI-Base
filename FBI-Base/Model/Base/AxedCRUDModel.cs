@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class AxedCRUDModel<T> : ICRUDModel<T> where T : class, AxedCRUDEntity, NamedCRUDEntity
+  public class AxedCRUDModel<T> : ICRUDModel<T> where T : class, AxedCRUDEntity, NamedCRUDEntity
   {
     protected SortedDictionary<AxisType, MultiIndexDictionary<UInt32, string, T>> m_CRUDDic = new SortedDictionary<AxisType, MultiIndexDictionary<UInt32, string, T>>();
 

@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class GroupModel : NamedCRUDModel<Group>
+  public class GroupModel : NamedCRUDModel<Group>
   {
     static GroupModel s_instance = new GroupModel();
     public static GroupModel Instance { get { return (s_instance); } }

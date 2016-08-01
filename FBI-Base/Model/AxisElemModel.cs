@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class AxisElemModel : AxedCRUDModel<AxisElem>
+  public class AxisElemModel : AxedCRUDModel<AxisElem>
   {
     static AxisElemModel s_instance = new AxisElemModel();
     public static AxisElemModel Instance { get { return (s_instance); } }

@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class UserAllowedEntityModel : ICRUDModel<UserAllowedEntity>
+  public class UserAllowedEntityModel : ICRUDModel<UserAllowedEntity>
   {
     static UserAllowedEntityModel s_instance = new UserAllowedEntityModel();
     public static UserAllowedEntityModel Instance { get { return (s_instance); } }

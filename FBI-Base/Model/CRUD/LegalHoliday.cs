@@ -14,7 +14,7 @@ namespace FBI.MVC.Model.CRUD
     FER
   }
 
-  class LegalHoliday : CRUDEntity
+  public class LegalHoliday : CRUDEntity
   {
     public UInt32 Id { get; set; }
     public UInt32 EmployeeId { get; set; }

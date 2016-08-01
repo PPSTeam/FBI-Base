@@ -14,7 +14,7 @@ namespace FBI.MVC.Model
   using FBI.MVC.Model.CRUD;
 
 
-  class PeriodModel
+  public class PeriodModel
   {
     #region "Instance Variables"
 

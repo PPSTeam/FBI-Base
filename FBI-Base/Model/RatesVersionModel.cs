@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class RatesVersionModel : NamedCRUDModel<ExchangeRateVersion>
+  public class RatesVersionModel : NamedCRUDModel<ExchangeRateVersion>
   {
     static RatesVersionModel s_instance = new RatesVersionModel();
     public static RatesVersionModel Instance { get { return (s_instance); } }

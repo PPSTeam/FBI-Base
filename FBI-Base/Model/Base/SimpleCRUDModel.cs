@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class SimpleCRUDModel<T> : ICRUDModel<T> where T : class, CRUDEntity
+  public class SimpleCRUDModel<T> : ICRUDModel<T> where T : class, CRUDEntity
   {
     private SortedDictionary<UInt32, T> m_dic = new SortedDictionary<UInt32, T>();
 

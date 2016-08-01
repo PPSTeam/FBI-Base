@@ -8,7 +8,7 @@ namespace FBI.Network
 {
   using Utils;
 
-  class Authenticator
+  public class Authenticator
   {
     static Authenticator s_instance = new Authenticator();
     public static Authenticator Instance { get { return (s_instance); } }

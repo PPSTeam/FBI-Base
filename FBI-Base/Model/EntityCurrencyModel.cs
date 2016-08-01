@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class EntityCurrencyModel : SimpleCRUDModel<EntityCurrency>
+  public class EntityCurrencyModel : SimpleCRUDModel<EntityCurrency>
   {
     static EntityCurrencyModel s_instance = new EntityCurrencyModel();
     public static EntityCurrencyModel Instance { get { return (s_instance); } }

@@ -10,7 +10,7 @@ namespace FBI.MVC.Model
   using Network;
   using Utils;
 
-  class AxisOwnerModel : SimpleCRUDModel<AxisOwner>
+  public class AxisOwnerModel : SimpleCRUDModel<AxisOwner>
   {
     static AxisOwnerModel s_instance = new AxisOwnerModel();
     public static AxisOwnerModel Instance { get { return (s_instance); } }

@@ -9,7 +9,7 @@ namespace FBI.Utils
   using MVC.Model;
   using MVC.Model.CRUD;
 
-    class ExchangeRateQuery
+    public class ExchangeRateQuery
     {
       static double GetExchangeRate(UInt32 p_entityId, UInt32 p_destCurrency, UInt32 p_period, UInt32 p_rateVersionId)
       {

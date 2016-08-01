@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FBI.Utils
 {
-  class ArrayUtils
+  public class ArrayUtils
   {
     public static void Set<T>(T[] p_array, T p_val)
     {

@@ -9,7 +9,7 @@ namespace FBI.MVC.Model
   using FBI.MVC.Model;
   using FBI.MVC.Model.CRUD;
 
-  class DuplicateRHAllocation
+  public class DuplicateRHAllocation
   {
     Account m_account;
     AxisElem m_entity;
