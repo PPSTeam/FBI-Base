@@ -19,12 +19,12 @@ namespace FBI.MVC.Model
 
     public FactLogModel()
     {
-      NetworkManager.Instance.SetCallback((UInt16)ServerMessage.SMSG_GET_FACT_LOG_ANSWER, GetFactLogAnswer);
+      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_GET_FACT_LOG_ANSWER, GetFactLogAnswer);
     }
 
     ~FactLogModel()
     {
-      NetworkManager.Instance.RemoveCallback((UInt16)ServerMessage.SMSG_GET_FACT_LOG_ANSWER, GetFactLogAnswer);
+      NetworkManager.RemoveCallback((UInt16)ServerMessage.SMSG_GET_FACT_LOG_ANSWER, GetFactLogAnswer);
     }
 
     public void GetFactLog(UInt32 p_accountId, UInt32 p_entityId, UInt32 p_period, UInt32 p_versionId)

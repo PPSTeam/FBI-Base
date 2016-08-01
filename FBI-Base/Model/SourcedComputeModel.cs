@@ -19,7 +19,7 @@ namespace FBI.MVC.Model
 
     public SourcedComputeModel()
     {
-      NetworkManager.Instance.SetCallback((UInt16)ServerMessage.SMSG_SOURCED_COMPUTE_RESULT, OnSourcedComputeResult);
+      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_SOURCED_COMPUTE_RESULT, OnSourcedComputeResult);
     }
 
     public bool Compute(SourcedComputeRequest p_request, List<Int32> p_requestIdList = null)

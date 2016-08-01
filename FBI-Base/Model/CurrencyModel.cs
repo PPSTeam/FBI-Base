@@ -41,14 +41,14 @@ namespace FBI.MVC.Model
 
       InitCallbacks();
 
-      NetworkManager.Instance.SetCallback((ushort)ServerMessage.SMSG_GET_MAIN_CURRENCY_ANSWER, SMSG_GET_MAIN_CURRENCY_ANSWER);
-      NetworkManager.Instance.SetCallback((ushort)ServerMessage.SMSG_SET_MAIN_CURRENCY_ANSWER, SMSG_SET_MAIN_CURRENCY_ANSWER);
+      NetworkManager.SetCallback((ushort)ServerMessage.SMSG_GET_MAIN_CURRENCY_ANSWER, SMSG_GET_MAIN_CURRENCY_ANSWER);
+      NetworkManager.SetCallback((ushort)ServerMessage.SMSG_SET_MAIN_CURRENCY_ANSWER, SMSG_SET_MAIN_CURRENCY_ANSWER);
     }
 
     ~CurrencyModel()
     {
-      NetworkManager.Instance.RemoveCallback((ushort)ServerMessage.SMSG_GET_MAIN_CURRENCY_ANSWER, SMSG_GET_MAIN_CURRENCY_ANSWER);
-      NetworkManager.Instance.RemoveCallback((ushort)ServerMessage.SMSG_SET_MAIN_CURRENCY_ANSWER, SMSG_SET_MAIN_CURRENCY_ANSWER);
+      NetworkManager.RemoveCallback((ushort)ServerMessage.SMSG_GET_MAIN_CURRENCY_ANSWER, SMSG_GET_MAIN_CURRENCY_ANSWER);
+      NetworkManager.RemoveCallback((ushort)ServerMessage.SMSG_SET_MAIN_CURRENCY_ANSWER, SMSG_SET_MAIN_CURRENCY_ANSWER);
     }
 
     #region "CRUD"

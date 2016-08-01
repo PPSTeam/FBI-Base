@@ -57,22 +57,22 @@ namespace FBI.MVC.Model
 
 	~ICRUDModel()
 	{
-		NetworkManager.Instance.RemoveCallback((UInt16)ReadSMSG, ReadAnswer_Intern);
-    NetworkManager.Instance.RemoveCallback((UInt16)DeleteSMSG, DeleteAnswer_Intern);
-    NetworkManager.Instance.RemoveCallback((UInt16)ListSMSG, ListAnswer_Intern);
-    NetworkManager.Instance.RemoveCallback((UInt16)UpdateSMSG, UpdateAnswer_Intern);
-    NetworkManager.Instance.RemoveCallback((UInt16)UpdateListSMSG, UpdateListAnswer_Intern);
-    NetworkManager.Instance.RemoveCallback((UInt16)CreateSMSG, CreateAnswer_Intern);
+		NetworkManager.RemoveCallback((UInt16)ReadSMSG, ReadAnswer_Intern);
+    NetworkManager.RemoveCallback((UInt16)DeleteSMSG, DeleteAnswer_Intern);
+    NetworkManager.RemoveCallback((UInt16)ListSMSG, ListAnswer_Intern);
+    NetworkManager.RemoveCallback((UInt16)UpdateSMSG, UpdateAnswer_Intern);
+    NetworkManager.RemoveCallback((UInt16)UpdateListSMSG, UpdateListAnswer_Intern);
+    NetworkManager.RemoveCallback((UInt16)CreateSMSG, CreateAnswer_Intern);
 	}
 
 	protected void InitCallbacks()
 	{
-    NetworkManager.Instance.SetCallback((UInt16)ReadSMSG, ReadAnswer_Intern);
-    NetworkManager.Instance.SetCallback((UInt16)DeleteSMSG, DeleteAnswer_Intern);
-    NetworkManager.Instance.SetCallback((UInt16)ListSMSG, ListAnswer_Intern);
-    NetworkManager.Instance.SetCallback((UInt16)UpdateSMSG, UpdateAnswer_Intern);
-    NetworkManager.Instance.SetCallback((UInt16)UpdateListSMSG, UpdateListAnswer_Intern);
-    NetworkManager.Instance.SetCallback((UInt16)CreateSMSG, CreateAnswer_Intern);
+    NetworkManager.SetCallback((UInt16)ReadSMSG, ReadAnswer_Intern);
+    NetworkManager.SetCallback((UInt16)DeleteSMSG, DeleteAnswer_Intern);
+    NetworkManager.SetCallback((UInt16)ListSMSG, ListAnswer_Intern);
+    NetworkManager.SetCallback((UInt16)UpdateSMSG, UpdateAnswer_Intern);
+    NetworkManager.SetCallback((UInt16)UpdateListSMSG, UpdateListAnswer_Intern);
+    NetworkManager.SetCallback((UInt16)CreateSMSG, CreateAnswer_Intern);
 	}
 
 	protected abstract void ListAnswer(ByteBuffer p_packet);

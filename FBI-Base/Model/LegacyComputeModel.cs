@@ -22,7 +22,7 @@ namespace FBI.MVC.Model
     public LegacyComputeModel() 
     {
       m_toDiffList = new SafeDictionary<Int32, Tuple<bool, Int32>>();
-      NetworkManager.Instance.SetCallback((UInt16)ServerMessage.SMSG_COMPUTE_RESULT, OnComputeResult);
+      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_COMPUTE_RESULT, OnComputeResult);
     }
 
     public bool ComputeDiff(LegacyComputeRequest p_request, List<Int32> p_requestIdList = null)

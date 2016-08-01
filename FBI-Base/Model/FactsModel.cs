@@ -24,20 +24,20 @@ namespace FBI.MVC.Model
 
     public FactsModel()
     {
-      NetworkManager.Instance.SetCallback((UInt16)ServerMessage.SMSG_UPDATE_FACT_LIST_ANSWER, UpdateListAnswer);
-      NetworkManager.Instance.SetCallback((UInt16)ServerMessage.SMSG_DELETE_FACT_ANSWER, DeleteFactAnswer);
+      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_UPDATE_FACT_LIST_ANSWER, UpdateListAnswer);
+      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_DELETE_FACT_ANSWER, DeleteFactAnswer);
     }
 
     ~FactsModel()
     {
-      NetworkManager.Instance.RemoveCallback((UInt16)ServerMessage.SMSG_UPDATE_FACT_LIST_ANSWER, UpdateListAnswer);
-      NetworkManager.Instance.RemoveCallback((UInt16)ServerMessage.SMSG_DELETE_FACT_ANSWER, DeleteFactAnswer);
+      NetworkManager.RemoveCallback((UInt16)ServerMessage.SMSG_UPDATE_FACT_LIST_ANSWER, UpdateListAnswer);
+      NetworkManager.RemoveCallback((UInt16)ServerMessage.SMSG_DELETE_FACT_ANSWER, DeleteFactAnswer);
     }
 
     public Int32 GetFactRH(UInt32 p_accountId, UInt32 p_entityId, List<AxisElem> p_employeeList, UInt32 p_versionId, UInt32 p_startPeriod, UInt32 p_endPeriod)
     {
 
-      NetworkManager.Instance.SetCallback((UInt16)ServerMessage.SMSG_GET_FACT_ANSWER, GetFactAnswer);
+      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_GET_FACT_ANSWER, GetFactAnswer);
       ByteBuffer l_packet = new ByteBuffer((UInt16)ClientMessage.CMSG_GET_FACT);
       Int32 l_requestId = l_packet.AssignRequestId();
 
@@ -58,7 +58,7 @@ namespace FBI.MVC.Model
 
     public Int32 GetFactFinancial(List<AxisElem> p_entitiesList, UInt32 p_versionId, UInt32 p_clientId, UInt32 p_productId, UInt32 p_adjustmentId)
     {
-      NetworkManager.Instance.SetCallback((UInt16)ServerMessage.SMSG_GET_FACT_ANSWER, GetFactAnswer);
+      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_GET_FACT_ANSWER, GetFactAnswer);
       ByteBuffer l_packet = new ByteBuffer((UInt16)ClientMessage.CMSG_GET_FACT);
       Int32 l_requestId = l_packet.AssignRequestId();
 

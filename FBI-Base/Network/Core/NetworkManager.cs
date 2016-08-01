@@ -21,7 +21,7 @@ namespace FBI.Network
     static NetworkManager s_mgr = new NetworkManager();
     Socket m_Sock;
     SslStream m_StreamSSL;
-    List<Action<ByteBuffer>>[] m_callback = new List<Action<ByteBuffer>>[(byte)ServerMessage.OpcodeMax];
+    static List<Action<ByteBuffer>>[] m_callback = new List<Action<ByteBuffer>>[(byte)ServerMessage.OpcodeMax];
 
     public bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
     {
@@ -33,7 +33,7 @@ namespace FBI.Network
       //return false;
     }
 
-    public void SetCallback(UInt16 p_opcodeId, Action<ByteBuffer> p_newCallback)
+    public static void SetCallback(UInt16 p_opcodeId, Action<ByteBuffer> p_newCallback)
     {
       if (p_opcodeId == 0 || p_opcodeId > (byte)ServerMessage.OpcodeMax)
         return;
@@ -47,14 +47,14 @@ namespace FBI.Network
       m_callback[p_opcodeId].Add(p_newCallback);
     }
 
-    public List<Action<ByteBuffer>> GetCallback(UInt16 p_opcodeId)
+    public static List<Action<ByteBuffer>> GetCallback(UInt16 p_opcodeId)
     {
       if (p_opcodeId < (byte)ServerMessage.OpcodeMax)
         return (m_callback[p_opcodeId]);
       return (null);
     }
 
-    public void RemoveCallback(UInt16 p_opcode, Action<ByteBuffer> p_oldCallback)
+    public static void RemoveCallback(UInt16 p_opcode, Action<ByteBuffer> p_oldCallback)
     {
       if (p_opcode == 0 || p_opcode > (byte)ServerMessage.OpcodeMax)
         return;

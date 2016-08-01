@@ -40,12 +40,12 @@ namespace FBI.MVC.Model
       Build = Version.BuildVersion;
 
       InitCallbacks();
-      NetworkManager.Instance.SetCallback((UInt16)CopySMSG, CopyAnswer);
+      NetworkManager.SetCallback((UInt16)CopySMSG, CopyAnswer);
     }
 
     ~VersionModel()
     {
-      NetworkManager.Instance.RemoveCallback((UInt16)CopySMSG, CopyAnswer);
+      NetworkManager.RemoveCallback((UInt16)CopySMSG, CopyAnswer);
     }
 
     #region CRUD

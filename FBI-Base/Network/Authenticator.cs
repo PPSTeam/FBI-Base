@@ -15,13 +15,13 @@ namespace FBI.Network
     public static string Username { get; private set; }
     static string m_password;
     public const string FBIVersionId = "1.0.3";
-    public static event AuthenticationEventHandler AuthenticationEvent;
+    public event AuthenticationEventHandler AuthenticationEvent;
     public delegate void AuthenticationEventHandler(ErrorMessage p_status);
 
-    Authenticator()
+    public Authenticator()
     {
-      NetworkManager.Instance.SetCallback((UInt16)ServerMessage.SMSG_AUTH_REQUEST_ANSWER, OnAuthRequestAnswer);
-      NetworkManager.Instance.SetCallback((UInt16)ServerMessage.SMSG_AUTH_ANSWER, OnAuthAnswer);
+      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_AUTH_REQUEST_ANSWER, OnAuthRequestAnswer);
+      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_AUTH_ANSWER, OnAuthAnswer);
     }
     
     public void AskAuthentication(string p_username, string p_password)
@@ -34,7 +34,7 @@ namespace FBI.Network
       NetworkManager.Instance.Send(l_packet);
     }
 
-    static void OnAuthRequestAnswer(ByteBuffer p_packet)
+    void OnAuthRequestAnswer(ByteBuffer p_packet)
     {
       string l_authToken;
       ByteBuffer l_answer = new ByteBuffer((UInt16)ClientMessage.CMSG_AUTHENTIFICATION);
@@ -53,7 +53,7 @@ namespace FBI.Network
       NetworkManager.Instance.Send(l_answer);
     }
 
-    static void OnAuthAnswer(ByteBuffer p_packet)
+    void OnAuthAnswer(ByteBuffer p_packet)
     {
       if (AuthenticationEvent != null)
         AuthenticationEvent(p_packet.GetError());
