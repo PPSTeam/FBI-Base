@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{217D0F8B-FBA3-4BF9-9759-7DA7986CC424}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FBI</RootNamespace>
+    <AssemblyName>FBI-Base</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotNetZip">
+      <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\AccountModel.cs" />
+    <Compile Include="Model\AComputeModel.cs" />
+    <Compile Include="Model\AxisConfigurationModel.cs" />
+    <Compile Include="Model\AxisElemModel.cs" />
+    <Compile Include="Model\AxisFilterModel.cs" />
+    <Compile Include="Model\AxisOwnerModel.cs" />
+    <Compile Include="Model\Base\AxedCRUDModel.cs" />
+    <Compile Include="Model\Base\ICRUDModel.cs" />
+    <Compile Include="Model\Base\NamedCRUDModel.cs" />
+    <Compile Include="Model\Base\SimpleCRUDModel.cs" />
+    <Compile Include="Model\ChartAccountModel.cs" />
+    <Compile Include="Model\ChartPanelModel.cs" />
+    <Compile Include="Model\ChartSettingsModel.cs" />
+    <Compile Include="Model\CommitModel.cs" />
+    <Compile Include="Model\Constants.cs" />
+    <Compile Include="Model\CRUD\Account.cs" />
+    <Compile Include="Model\CRUD\AComputeRequest.cs" />
+    <Compile Include="Model\CRUD\AxisConfiguration.cs" />
+    <Compile Include="Model\CRUD\AxisElem.cs" />
+    <Compile Include="Model\CRUD\AxisElemLog.cs" />
+    <Compile Include="Model\CRUD\AxisFilter.cs" />
+    <Compile Include="Model\CRUD\AxisOwner.cs" />
+    <Compile Include="Model\CRUD\BaseVersion.cs" />
+    <Compile Include="Model\CRUD\Base\AxedCRUDEntity.cs" />
+    <Compile Include="Model\CRUD\Base\CRUDEntity.cs" />
+    <Compile Include="Model\CRUD\Base\HierarchyCRUDEntity.cs" />
+    <Compile Include="Model\CRUD\Base\NamedCRUDEntity.cs" />
+    <Compile Include="Model\CRUD\Base\NamedHierarchyCRUDEntity.cs" />
+    <Compile Include="Model\CRUD\ChartAccount.cs" />
+    <Compile Include="Model\CRUD\ChartPanel.cs" />
+    <Compile Include="Model\CRUD\ChartSettings.cs" />
+    <Compile Include="Model\CRUD\Commit.cs" />
+    <Compile Include="Model\CRUD\CommitLog.cs" />
+    <Compile Include="Model\CRUD\ComputeConfig.cs" />
+    <Compile Include="Model\CRUD\ComputeResult.cs" />
+    <Compile Include="Model\CRUD\CRUDAction.cs" />
+    <Compile Include="Model\CRUD\CUIDimensionConf.cs" />
+    <Compile Include="Model\CRUD\Currency.cs" />
+    <Compile Include="Model\CRUD\DimensionElem.cs" />
+    <Compile Include="Model\CRUD\DimensionKey.cs" />
+    <Compile Include="Model\CRUD\EntityCurrency.cs" />
+    <Compile Include="Model\CRUD\EntityDistribution.cs" />
+    <Compile Include="Model\CRUD\ExchangeRate.cs" />
+    <Compile Include="Model\CRUD\ExchangeRateVersion.cs" />
+    <Compile Include="Model\CRUD\Fact.cs" />
+    <Compile Include="Model\CRUD\FactLog.cs" />
+    <Compile Include="Model\CRUD\FactTag.cs" />
+    <Compile Include="Model\CRUD\FBIFunction.cs" />
+    <Compile Include="Model\CRUD\Filter.cs" />
+    <Compile Include="Model\CRUD\FilterValue.cs" />
+    <Compile Include="Model\CRUD\FModelingAccount.cs" />
+    <Compile Include="Model\CRUD\GlobalFact.cs" />
+    <Compile Include="Model\CRUD\GlobalFactData.cs" />
+    <Compile Include="Model\CRUD\GlobalFactVersion.cs" />
+    <Compile Include="Model\CRUD\Group.cs" />
+    <Compile Include="Model\CRUD\LegacyComputeRequest.cs" />
+    <Compile Include="Model\CRUD\LegalHoliday.cs" />
+    <Compile Include="Model\CRUD\PeriodDimension.cs" />
+    <Compile Include="Model\CRUD\ResultKey.cs" />
+    <Compile Include="Model\CRUD\SourcedComputeRequest.cs" />
+    <Compile Include="Model\CRUD\User.cs" />
+    <Compile Include="Model\CRUD\UserAllowedEntity.cs" />
+    <Compile Include="Model\CRUD\Version.cs" />
+    <Compile Include="Model\CurrencyModel.cs" />
+    <Compile Include="Model\DuplicateRHAllocation.cs" />
+    <Compile Include="Model\EntityCurrencyModel.cs" />
+    <Compile Include="Model\EntityDistributionModel.cs" />
+    <Compile Include="Model\ExchangeRateModel.cs" />
+    <Compile Include="Model\FactLogModel.cs" />
+    <Compile Include="Model\FactsModel.cs" />
+    <Compile Include="Model\FactTagModel.cs" />
+    <Compile Include="Model\FilterModel.cs" />
+    <Compile Include="Model\FilterValueModel.cs" />
+    <Compile Include="Model\FModelingAccountModel.cs" />
+    <Compile Include="Model\GlobalFactDataModel.cs" />
+    <Compile Include="Model\GlobalFactModel.cs" />
+    <Compile Include="Model\GlobalFactVersionModel.cs" />
+    <Compile Include="Model\GroupModel.cs" />
+    <Compile Include="Model\LegacyComputeModel.cs" />
+    <Compile Include="Model\LegalHolidayModel.cs" />
+    <Compile Include="Model\PeriodModel.cs" />
+    <Compile Include="Model\RatesVersionModel.cs" />
+    <Compile Include="Model\SourcedComputeModel.cs" />
+    <Compile Include="Model\UserAllowedEntityModel.cs" />
+    <Compile Include="Model\UserModel.cs" />
+    <Compile Include="Model\VersionModel.cs" />
+    <Compile Include="Network\Authenticator.cs" />
+    <Compile Include="Network\Core\ByteBuffer.cs" />
+    <Compile Include="Network\Core\ClientMessage.cs" />
+    <Compile Include="Network\Core\ClientState.cs" />
+    <Compile Include="Network\Core\ErrorMessage.cs" />
+    <Compile Include="Network\Core\NetworkManager.cs" />
+    <Compile Include="Network\Core\ServerMessage.cs" />
+    <Compile Include="Network\NetworkLauncher.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\ArrayUtils.cs" />
+    <Compile Include="Utils\CircularBuffer.cs" />
+    <Compile Include="Utils\ExchangeRateQuery.cs" />
+    <Compile Include="Utils\Hash.cs" />
+    <Compile Include="Utils\Local.cs" />
+    <Compile Include="Utils\MultiIndexDictionary.cs" />
+    <Compile Include="Utils\PeriodUtils.cs" />
+    <Compile Include="Utils\SafeDictionary.cs" />
+    <Compile Include="Utils\StringUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
