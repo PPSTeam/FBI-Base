@@ -17,7 +17,7 @@ namespace FBI.MVC.Model
     SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, UserAllowedEntity>> m_userAllowedEntityDic =
       new SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, UserAllowedEntity>>();
 
-    UserAllowedEntityModel()
+    public UserAllowedEntityModel()
     {
       CreateCMSG = ClientMessage.CMSG_ADD_USER_ENTITY;
       DeleteCMSG = ClientMessage.CMSG_DEL_USER_ENTITY;

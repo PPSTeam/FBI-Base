@@ -18,7 +18,7 @@ namespace FBI.MVC.Model
     static AxisFilterModel s_instance = new AxisFilterModel();
     public static AxisFilterModel Instance { get { return (s_instance); } }
 
-    AxisFilterModel()
+    public AxisFilterModel()
     {
       Clear();
 

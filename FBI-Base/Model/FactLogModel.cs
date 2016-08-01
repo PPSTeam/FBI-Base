@@ -17,7 +17,7 @@ namespace FBI.MVC.Model
     public event ReadEventHandler ReadEvent;
     public delegate void ReadEventHandler(bool p_status, List<FactLog> p_factLogList);
 
-    FactLogModel()
+    public FactLogModel()
     {
       NetworkManager.Instance.SetCallback((UInt16)ServerMessage.SMSG_GET_FACT_LOG_ANSWER, GetFactLogAnswer);
     }

@@ -17,7 +17,7 @@ namespace FBI.MVC.Model
     static SourcedComputeModel s_instance = new SourcedComputeModel();
     public static SourcedComputeModel Instance { get { return (s_instance); } }
 
-    SourcedComputeModel()
+    public SourcedComputeModel()
     {
       NetworkManager.Instance.SetCallback((UInt16)ServerMessage.SMSG_SOURCED_COMPUTE_RESULT, OnSourcedComputeResult);
     }

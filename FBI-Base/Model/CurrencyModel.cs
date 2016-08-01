@@ -21,7 +21,7 @@ namespace FBI.MVC.Model
     public event GetMainCurrencyEventHandler GetMainCurrencyEvent;
     public delegate void GetMainCurrencyEventHandler(ErrorMessage p_status, UInt32 p_id);
 
-    CurrencyModel()
+    public CurrencyModel()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_CURRENCY;
       ReadCMSG = ClientMessage.CMSG_READ_CURRENCY;

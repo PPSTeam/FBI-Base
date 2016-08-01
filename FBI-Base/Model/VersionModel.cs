@@ -19,7 +19,7 @@ namespace FBI.MVC.Model
     public event CopyEventHandler CopyEvent;
     public delegate void CopyEventHandler(ErrorMessage p_status, UInt32 p_id);
 
-    VersionModel()
+    public VersionModel()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_VERSION;
       ReadCMSG = ClientMessage.CMSG_READ_VERSION;

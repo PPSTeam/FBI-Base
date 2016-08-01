@@ -17,7 +17,7 @@ namespace FBI.MVC.Model
     SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, LegalHoliday>> m_legalHolidayDic =
       new SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, LegalHoliday>>();
 
-    LegalHolidayModel()
+    public LegalHolidayModel()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_LEGAL_HOLIDAY;
       DeleteCMSG = ClientMessage.CMSG_DELETE_LEGAL_HOLIDAY;

@@ -15,7 +15,7 @@ namespace FBI.MVC.Model
     static AxisOwnerModel s_instance = new AxisOwnerModel();
     public static AxisOwnerModel Instance { get { return (s_instance); } }
 
-    AxisOwnerModel()
+    public AxisOwnerModel()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_AXIS_OWNER;
       ReadCMSG = ClientMessage.CMSG_READ_AXIS_OWNER;

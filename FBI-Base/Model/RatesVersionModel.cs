@@ -14,7 +14,7 @@ namespace FBI.MVC.Model
   {
     static RatesVersionModel s_instance = new RatesVersionModel();
     public static RatesVersionModel Instance { get { return (s_instance); } }
-    RatesVersionModel()
+    public RatesVersionModel()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_RATE_VERSION;
       ReadCMSG = ClientMessage.CMSG_READ_RATE_VERSION;

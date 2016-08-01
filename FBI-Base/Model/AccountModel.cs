@@ -14,7 +14,7 @@ namespace FBI.MVC.Model
     static AccountModel s_instance = new AccountModel();
     public static AccountModel Instance { get { return (s_instance); } }
 
-    AccountModel()
+    public AccountModel()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_ACCOUNT;
       ReadCMSG = ClientMessage.CMSG_READ_ACCOUNT;

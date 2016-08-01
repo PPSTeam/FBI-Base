@@ -15,7 +15,7 @@ namespace FBI.MVC.Model
     static AxisElemModel s_instance = new AxisElemModel();
     public static AxisElemModel Instance { get { return (s_instance); } }
 
-    AxisElemModel()
+    public AxisElemModel()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_AXIS_ELEM;
       ReadCMSG = ClientMessage.CMSG_READ_AXIS_ELEM;

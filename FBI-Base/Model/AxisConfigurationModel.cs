@@ -15,7 +15,7 @@ namespace FBI.MVC.Model
     static AxisConfigurationModel s_instance = new AxisConfigurationModel();
     public static AxisConfigurationModel Instance { get { return (s_instance); } }
 
-    AxisConfigurationModel()
+    public AxisConfigurationModel()
     {
       ListSMSG = ServerMessage.SMSG_AXIS_CONFIGURATION_LIST;
 

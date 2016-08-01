@@ -16,7 +16,7 @@ namespace FBI.MVC.Model
     public static UserModel Instance { get { return (s_instance); } }
     public string CurrentUserName = "";
 
-    UserModel()
+    public UserModel()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_USER;
       ReadCMSG = ClientMessage.CMSG_READ_USER;

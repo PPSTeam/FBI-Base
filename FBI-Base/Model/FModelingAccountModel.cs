@@ -14,7 +14,7 @@ namespace FBI.MVC.Model
   {
     static FModelingAccountModel s_instance = new FModelingAccountModel();
     public static FModelingAccountModel Instance { get { return (s_instance); } }
-    FModelingAccountModel()
+    public FModelingAccountModel()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_FMODELING_ACCOUNT;
       ReadCMSG = ClientMessage.CMSG_READ_FMODELING_ACCOUNT;

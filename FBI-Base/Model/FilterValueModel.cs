@@ -16,7 +16,7 @@ namespace FBI.MVC.Model
     public static FilterValueModel Instance { get { return (s_instance); } }
     private SortedDictionary<UInt32, MultiIndexDictionary<UInt32, string, FilterValue>> m_filterValuesDic = new SortedDictionary<UInt32, MultiIndexDictionary<UInt32, string, FilterValue>>();
 
-    FilterValueModel()
+    public FilterValueModel()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_FILTER_VALUE;
       ReadCMSG = ClientMessage.CMSG_READ_FILTER_VALUE;

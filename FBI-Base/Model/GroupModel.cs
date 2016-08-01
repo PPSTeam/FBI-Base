@@ -14,7 +14,7 @@ namespace FBI.MVC.Model
   {
     static GroupModel s_instance = new GroupModel();
     public static GroupModel Instance { get { return (s_instance); } }
-    GroupModel()
+    public GroupModel()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_GROUP;
       ReadCMSG = ClientMessage.CMSG_READ_GROUP;

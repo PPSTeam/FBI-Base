@@ -15,7 +15,7 @@ namespace FBI.MVC.Model
     static FilterModel s_instance = new FilterModel();
     public static FilterModel Instance { get { return (s_instance); } }
 
-    FilterModel()
+    public FilterModel()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_FILTER;
       ReadCMSG = ClientMessage.CMSG_READ_FILTER;

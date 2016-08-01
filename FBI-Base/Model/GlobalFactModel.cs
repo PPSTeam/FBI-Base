@@ -14,7 +14,7 @@ namespace FBI.MVC.Model
   {
     static GlobalFactModel s_instance = new GlobalFactModel();
     public static GlobalFactModel Instance { get { return (s_instance); } }
-    GlobalFactModel()
+    public GlobalFactModel()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_GLOBAL_FACT;
       ReadCMSG = ClientMessage.CMSG_READ_GLOBAL_FACT;
