@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class AxisConfigurationModel : SimpleCRUDModel<AxisConfiguration>
   {
-    static AxisConfigurationModel s_instance = new AxisConfigurationModel();
-    public static AxisConfigurationModel Instance { get { return (s_instance); } }
+    static AxisConfigurationModel s_instance = null;
+    public static AxisConfigurationModel Instance 
+    { get { return (s_instance == null) ? s_instance = new AxisConfigurationModel() : s_instance; } }
 
     AxisConfigurationModel() : base(NetworkManager.Instance)
     {

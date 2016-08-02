@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class UserAllowedEntityModel : ICRUDModel<UserAllowedEntity>
   {
-    static UserAllowedEntityModel s_instance = new UserAllowedEntityModel();
-    public static UserAllowedEntityModel Instance { get { return (s_instance); } }
+    static UserAllowedEntityModel s_instance = null;
+    public static UserAllowedEntityModel Instance 
+    { get { return (s_instance == null) ? s_instance = new UserAllowedEntityModel() : s_instance; } }
     SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, UserAllowedEntity>> m_userAllowedEntityDic =
       new SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, UserAllowedEntity>>();
 

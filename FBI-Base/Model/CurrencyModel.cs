@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class CurrencyModel : NamedCRUDModel<Currency>
   {
-    static CurrencyModel s_instance = new CurrencyModel();
-    public static CurrencyModel Instance { get { return (s_instance); } }
+    static CurrencyModel s_instance = null;
+    public static CurrencyModel Instance
+    { get { return (s_instance == null) ? s_instance = new CurrencyModel() : s_instance; } }
 
     SortedSet<UInt32> m_usedCurrencies = new SortedSet<UInt32>();
     UInt32 m_mainCurrency;

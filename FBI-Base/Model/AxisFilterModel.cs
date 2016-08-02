@@ -15,8 +15,9 @@ namespace FBI.MVC.Model
     protected SortedDictionary<AxisType, MultiIndexDictionary<UInt32, Tuple<UInt32, UInt32>, AxisFilter>> m_axisFilterDictionary =
       new SortedDictionary<AxisType, MultiIndexDictionary<UInt32, Tuple<UInt32, UInt32>, AxisFilter>>();
 
-    static AxisFilterModel s_instance = new AxisFilterModel();
-    public static AxisFilterModel Instance { get { return (s_instance); } }
+    static AxisFilterModel s_instance = null;
+    public static AxisFilterModel Instance 
+    { get { return (s_instance == null) ? s_instance = new AxisFilterModel() : s_instance; } }
 
     AxisFilterModel() : base(NetworkManager.Instance)
     {

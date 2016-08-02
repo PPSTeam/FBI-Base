@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class GlobalFactModel : NamedCRUDModel<GlobalFact>
   {
-    static GlobalFactModel s_instance = new GlobalFactModel();
-    public static GlobalFactModel Instance { get { return (s_instance); } }
+    static GlobalFactModel s_instance = null;
+    public static GlobalFactModel Instance 
+    { get { return (s_instance == null) ? s_instance = new GlobalFactModel() : s_instance; } }
 
     GlobalFactModel() : base(false, NetworkManager.Instance)
     {

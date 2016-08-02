@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class ChartPanelModel : NamedCRUDModel<ChartPanel>
   {
-    static ChartPanelModel s_instance = new ChartPanelModel();
-    public static ChartPanelModel Instance { get { return (s_instance); } }
+    static ChartPanelModel s_instance = null;
+    public static ChartPanelModel Instance 
+    { get { return (s_instance == null) ? s_instance = new ChartPanelModel() : s_instance; } }
 
     ChartPanelModel() : base(true, NetworkManager.Instance)
     {

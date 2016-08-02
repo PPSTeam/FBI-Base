@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class FactTagModel : SimpleCRUDModel<FactTag>
   {
-    static FactTagModel s_instance = new FactTagModel();
-    public static FactTagModel Instance { get { return (s_instance); } }
+    static FactTagModel s_instance = null;
+    public static FactTagModel Instance 
+    { get { return (s_instance == null) ? s_instance = new FactTagModel() : s_instance; } }
 
     FactTagModel() : base(NetworkManager.Instance)
     {

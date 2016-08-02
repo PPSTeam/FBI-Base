@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class RatesVersionModel : NamedCRUDModel<ExchangeRateVersion>
   {
-    static RatesVersionModel s_instance = new RatesVersionModel();
-    public static RatesVersionModel Instance { get { return (s_instance); } }
+    static RatesVersionModel s_instance = null;
+    public static RatesVersionModel Instance 
+    { get { return (s_instance == null) ? s_instance = new RatesVersionModel() : s_instance; } }
 
     RatesVersionModel() : base(false, NetworkManager.Instance)
     {

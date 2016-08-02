@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class ExchangeRateModel : ICRUDModel<ExchangeRate>
   {
-    static ExchangeRateModel s_instance = new ExchangeRateModel();
-    public static ExchangeRateModel Instance { get { return (s_instance); } }
+    static ExchangeRateModel s_instance = null;
+    public static ExchangeRateModel Instance 
+    { get { return (s_instance == null) ? s_instance = new ExchangeRateModel() : s_instance; } }
 
     MultiIndexDictionary<UInt32, Tuple<UInt32, UInt32, UInt32>, ExchangeRate> m_CRUDDic = new MultiIndexDictionary<UInt32,Tuple<UInt32,UInt32,UInt32>,ExchangeRate>();
 

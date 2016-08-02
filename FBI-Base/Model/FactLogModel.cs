@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class FactLogModel
   {
-    static FactLogModel s_instance = new FactLogModel();
-    public static FactLogModel Instance { get { return (s_instance); } }
+    static FactLogModel s_instance = null;
+    public static FactLogModel Instance 
+    { get { return (s_instance == null) ? s_instance = new FactLogModel() : s_instance; } }
     public event ReadEventHandler ReadEvent;
     public delegate void ReadEventHandler(bool p_status, List<FactLog> p_factLogList);
     NetworkManager m_netMgr;

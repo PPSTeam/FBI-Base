@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class CommitModel : ICRUDModel<Commit>
   {
-    static CommitModel s_instance = new CommitModel();
-    public static CommitModel Instance { get { return (s_instance); } }
+    static CommitModel s_instance = null;
+    public static CommitModel Instance 
+    { get { return (s_instance == null) ? s_instance = new CommitModel() : s_instance; } }
 
     SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, Commit>> m_commitDic = new SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, Commit>>();
 

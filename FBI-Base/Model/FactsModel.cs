@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class FactsModel
   {
-    static FactsModel s_instance = new FactsModel();
-    public static FactsModel Instance { get { return (s_instance); } }
+    static FactsModel s_instance = null;
+    public static FactsModel Instance 
+    { get { return (s_instance == null) ? s_instance = new FactsModel() : s_instance; } }
     public event UpdateEventHandler UpdateEvent;
     public delegate void UpdateEventHandler(ErrorMessage p_status, CRUDAction p_action, SafeDictionary<string, Tuple<UInt32, ErrorMessage>> p_resultsDict);
     public event DeleteEventHandler DeleteEvent;

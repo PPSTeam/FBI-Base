@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class ChartSettingsModel : ICRUDModel<ChartSettings>
   {
-    static ChartSettingsModel s_instance = new ChartSettingsModel();
-    public static ChartSettingsModel Instance { get { return (s_instance); } }
+    static ChartSettingsModel s_instance = null;
+    public static ChartSettingsModel Instance 
+    { get { return (s_instance == null) ? s_instance = new ChartSettingsModel() : s_instance; } }
     SortedDictionary<UInt32, SafeDictionary<UInt32, ChartSettings>> m_chartDic =
       new SortedDictionary<UInt32, SafeDictionary<UInt32, ChartSettings>>();
 

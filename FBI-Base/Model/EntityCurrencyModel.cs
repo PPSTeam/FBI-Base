@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class EntityCurrencyModel : SimpleCRUDModel<EntityCurrency>
   {
-    static EntityCurrencyModel s_instance = new EntityCurrencyModel();
-    public static EntityCurrencyModel Instance { get { return (s_instance); } }
+    static EntityCurrencyModel s_instance = null;
+    public static EntityCurrencyModel Instance
+    { get { return (s_instance == null) ? s_instance = new EntityCurrencyModel() : s_instance; } }
 
     EntityCurrencyModel() : base(NetworkManager.Instance)
     {

@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class GlobalFactVersionModel : NamedCRUDModel<GlobalFactVersion>
   {
-    static GlobalFactVersionModel s_instance = new GlobalFactVersionModel();
-    public static GlobalFactVersionModel Instance { get { return (s_instance); } }
+    static GlobalFactVersionModel s_instance = null;
+    public static GlobalFactVersionModel Instance 
+    { get { return (s_instance == null) ? s_instance = new GlobalFactVersionModel() : s_instance; } }
     
     GlobalFactVersionModel() : base(false, NetworkManager.Instance)
     {

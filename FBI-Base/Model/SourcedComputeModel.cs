@@ -14,8 +14,9 @@ namespace FBI.MVC.Model
     public event ComputeCompleteEventHandler ComputeCompleteEvent;
     public delegate void ComputeCompleteEventHandler(ErrorMessage p_status, SourcedComputeRequest p_request, SafeDictionary<UInt32, ComputeResult> p_result);
 
-    static SourcedComputeModel s_instance = new SourcedComputeModel();
-    public static SourcedComputeModel Instance { get { return (s_instance); } }
+    static SourcedComputeModel s_instance = null;
+    public static SourcedComputeModel Instance 
+    { get { return (s_instance == null) ? s_instance = new SourcedComputeModel() : s_instance; } }
     NetworkManager m_netMgr;
 
     SourcedComputeModel()

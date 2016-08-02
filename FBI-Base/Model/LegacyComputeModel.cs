@@ -14,8 +14,9 @@ namespace FBI.MVC.Model
     public event ComputeCompleteEventHandler ComputeCompleteEvent;
     public delegate void ComputeCompleteEventHandler(ErrorMessage p_status, LegacyComputeRequest p_request, SafeDictionary<UInt32, ComputeResult> p_result);
 
-    static LegacyComputeModel s_instance = new LegacyComputeModel();
-    public static LegacyComputeModel Instance { get { return (s_instance); } }
+    static LegacyComputeModel s_instance = null;
+    public static LegacyComputeModel Instance 
+    { get { return (s_instance == null) ? s_instance = new LegacyComputeModel() : s_instance; } }
 
     SafeDictionary<Int32, Tuple<bool, Int32>> m_toDiffList;
     NetworkManager m_netMgr;

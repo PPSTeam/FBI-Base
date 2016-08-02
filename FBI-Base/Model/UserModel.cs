@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class UserModel : NamedCRUDModel<User>
   {
-    static UserModel s_instance = new UserModel();
-    public static UserModel Instance { get { return (s_instance); } }
+    static UserModel s_instance = null;
+    public static UserModel Instance 
+    { get { return (s_instance == null) ? s_instance = new UserModel() : s_instance; } }
     public string CurrentUserName = "";
 
     UserModel() : base(false, NetworkManager.Instance)

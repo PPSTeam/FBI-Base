@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class AxisElemModel : AxedCRUDModel<AxisElem>
   {
-    static AxisElemModel s_instance = new AxisElemModel();
-    public static AxisElemModel Instance { get { return (s_instance); } }
+    static AxisElemModel s_instance = null;
+    public static AxisElemModel Instance
+    { get { return (s_instance == null) ? s_instance = new AxisElemModel() : s_instance; } }
 
     AxisElemModel() : base(NetworkManager.Instance)
     {

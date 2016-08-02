@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class GlobalFactDataModel : ICRUDModel<GlobalFactData>
   {
-    static GlobalFactDataModel s_instance = new GlobalFactDataModel();
-    public static GlobalFactDataModel Instance { get { return (s_instance); } }
+    static GlobalFactDataModel s_instance = null;
+    public static GlobalFactDataModel Instance 
+    { get { return (s_instance == null) ? s_instance = new GlobalFactDataModel() : s_instance; } }
     private MultiIndexDictionary<UInt32, Tuple<UInt32, UInt32, UInt32>, GlobalFactData> m_globalFactDic = new MultiIndexDictionary<UInt32, Tuple<UInt32, UInt32, UInt32>, GlobalFactData>();
     
     GlobalFactDataModel() : base(NetworkManager.Instance)

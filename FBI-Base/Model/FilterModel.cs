@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class FilterModel : AxedCRUDModel<Filter>
   {
-    static FilterModel s_instance = new FilterModel();
-    public static FilterModel Instance { get { return (s_instance); } }
+    static FilterModel s_instance = null;
+    public static FilterModel Instance 
+    { get { return (s_instance == null) ? s_instance = new FilterModel() : s_instance; } }
 
     FilterModel() : base(NetworkManager.Instance)
     {

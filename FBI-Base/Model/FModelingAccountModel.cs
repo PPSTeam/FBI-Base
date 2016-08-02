@@ -12,9 +12,10 @@ namespace FBI.MVC.Model
 
   public class FModelingAccountModel : NamedCRUDModel<FModelingAccount>
   {
-    static FModelingAccountModel s_instance = new FModelingAccountModel();
-    public static FModelingAccountModel Instance { get { return (s_instance); } }
-    
+    static FModelingAccountModel s_instance = null;
+    public static FModelingAccountModel Instance 
+    { get { return (s_instance == null) ? s_instance = new FModelingAccountModel() : s_instance; } }
+
     FModelingAccountModel() : base(false, NetworkManager.Instance)
     {
       Init();

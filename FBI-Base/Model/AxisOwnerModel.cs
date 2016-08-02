@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class AxisOwnerModel : SimpleCRUDModel<AxisOwner>
   {
-    static AxisOwnerModel s_instance = new AxisOwnerModel();
-    public static AxisOwnerModel Instance { get { return (s_instance); } }
+    static AxisOwnerModel s_instance = null;
+    public static AxisOwnerModel Instance 
+    { get { return (s_instance == null) ? s_instance = new AxisOwnerModel() : s_instance; } }
 
     AxisOwnerModel() : base(NetworkManager.Instance)
     {

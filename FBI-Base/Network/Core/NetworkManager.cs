@@ -17,8 +17,9 @@ namespace FBI.Network
 {
   public class NetworkManager
   {
-    public static NetworkManager Instance { get { return s_mgr; } }
-    static NetworkManager s_mgr = new NetworkManager();
+    public static NetworkManager Instance 
+    { get { return (s_mgr == null) ? s_mgr = new NetworkManager() : s_mgr; } }
+    static NetworkManager s_mgr = null;
     Socket m_Sock;
     SslStream m_StreamSSL;
     static List<Action<ByteBuffer>>[] m_callback = new List<Action<ByteBuffer>>[(byte)ServerMessage.OpcodeMax];
@@ -120,7 +121,7 @@ namespace FBI.Network
 
     public bool Send(ByteBuffer p_data)
     {
-      if (m_Sock.Connected == false)
+      if (m_Sock == null || m_Sock.Connected == false)
         return false;
       try
       {

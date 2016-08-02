@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class GroupModel : NamedCRUDModel<Group>
   {
-    static GroupModel s_instance = new GroupModel();
-    public static GroupModel Instance { get { return (s_instance); } }
+    static GroupModel s_instance = null;
+    public static GroupModel Instance 
+    { get { return (s_instance == null) ? s_instance = new GroupModel() : s_instance; } }
     
     GroupModel() : base(false, NetworkManager.Instance)
     {

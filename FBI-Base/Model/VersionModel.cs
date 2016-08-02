@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class VersionModel : NamedCRUDModel<Version>
   {
-    static VersionModel s_instance = new VersionModel();
-    public static VersionModel Instance { get { return (s_instance); } }
+    static VersionModel s_instance = null;
+    public static VersionModel Instance 
+    { get { return (s_instance == null) ? s_instance = new VersionModel() : s_instance; } }
     ClientMessage CopyCMSG;
     ServerMessage CopySMSG;
     public event CopyEventHandler CopyEvent;

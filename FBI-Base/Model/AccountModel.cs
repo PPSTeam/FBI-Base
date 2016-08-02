@@ -11,8 +11,9 @@ namespace FBI.MVC.Model
 
   public class AccountModel : NamedCRUDModel<Account>
   {
-    static AccountModel s_instance = new AccountModel();
-    public static AccountModel Instance { get { return (s_instance); } }
+    static AccountModel s_instance = null;
+    public static AccountModel Instance 
+    { get { return (s_instance == null) ? s_instance = new AccountModel() : s_instance; } }
 
     AccountModel() : base(false, NetworkManager.Instance)
     {

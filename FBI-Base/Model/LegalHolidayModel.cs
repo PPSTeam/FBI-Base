@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class LegalHolidayModel : ICRUDModel<LegalHoliday>
   {
-    static LegalHolidayModel s_instance = new LegalHolidayModel();
-    public static LegalHolidayModel Instance { get { return (s_instance); } }
+    static LegalHolidayModel s_instance = null;
+    public static LegalHolidayModel Instance 
+    { get { return (s_instance == null) ? s_instance = new LegalHolidayModel() : s_instance; } }
     SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, LegalHoliday>> m_legalHolidayDic =
       new SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, LegalHoliday>>();
 

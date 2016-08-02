@@ -10,8 +10,9 @@ namespace FBI.Network
 
   public class Authenticator
   {
-    static Authenticator s_instance = new Authenticator();
-    public static Authenticator Instance { get { return (s_instance); } }
+    static Authenticator s_instance = null;
+    public static Authenticator Instance 
+    { get { return ((s_instance == null) ? s_instance = new Authenticator() : s_instance); } }
     public static string Username { get; private set; }
     static string m_password;
     public const string FBIVersionId = "1.0.3";

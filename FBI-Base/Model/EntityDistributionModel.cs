@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class EntityDistributionModel : ICRUDModel<EntityDistribution>
   {
-    static EntityDistributionModel s_instance = new EntityDistributionModel();
-    public static EntityDistributionModel Instance { get { return (s_instance); } }
+    static EntityDistributionModel s_instance = null;
+    public static EntityDistributionModel Instance 
+    { get { return (s_instance == null) ? s_instance = new EntityDistributionModel() : s_instance; } }
 
     SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, EntityDistribution>> m_CRUDDic =
       new SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, EntityDistribution>>();

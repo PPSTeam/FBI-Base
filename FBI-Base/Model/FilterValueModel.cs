@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class FilterValueModel : ICRUDModel<FilterValue>
   {
-    static FilterValueModel s_instance = new FilterValueModel();
-    public static FilterValueModel Instance { get { return (s_instance); } }
+    static FilterValueModel s_instance = null;
+    public static FilterValueModel Instance 
+    { get { return (s_instance == null) ? s_instance = new FilterValueModel() : s_instance; } }
     private SortedDictionary<UInt32, MultiIndexDictionary<UInt32, string, FilterValue>> m_filterValuesDic = new SortedDictionary<UInt32, MultiIndexDictionary<UInt32, string, FilterValue>>();
 
     FilterValueModel() : base(NetworkManager.Instance)

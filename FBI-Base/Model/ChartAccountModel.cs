@@ -12,8 +12,9 @@ namespace FBI.MVC.Model
 
   public class ChartAccountModel : ICRUDModel<ChartAccount>
   {
-    static ChartAccountModel s_instance = new ChartAccountModel();
-    public static ChartAccountModel Instance { get { return (s_instance); } }
+    static ChartAccountModel s_instance = null;
+    public static ChartAccountModel Instance 
+    { get { return (s_instance == null) ? s_instance = new ChartAccountModel() : s_instance; } }
     SortedDictionary<UInt32, SafeDictionary<UInt32, ChartAccount>> m_chartAccountDic =
       new SortedDictionary<UInt32, SafeDictionary<UInt32, ChartAccount>>();
 
