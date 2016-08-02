@@ -15,7 +15,17 @@ namespace FBI.MVC.Model
     static ChartPanelModel s_instance = new ChartPanelModel();
     public static ChartPanelModel Instance { get { return (s_instance); } }
 
-    public ChartPanelModel() : base(true)
+    ChartPanelModel() : base(true, NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public ChartPanelModel(NetworkManager p_netMgr) : base(true, p_netMgr)
+    {
+      Init();
+    }
+
+    void Init()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_CHART_PANEL;
       UpdateCMSG = ClientMessage.CMSG_UPDATE_CHART_PANEL;

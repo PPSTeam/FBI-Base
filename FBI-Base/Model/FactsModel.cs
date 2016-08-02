@@ -21,23 +21,36 @@ namespace FBI.MVC.Model
     public event ReadEventHandler ReadEvent;
     public delegate void ReadEventHandler(ErrorMessage p_status, Int32 p_requestId, List<Fact> p_fact_list);
     private SafeDictionary<Int32, List<string>> m_requestIdCommitDic = new SafeDictionary<Int32, List<string>>();
+    NetworkManager m_netMgr;
 
-    public FactsModel()
+    public FactsModel(NetworkManager p_netMgr)
     {
-      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_UPDATE_FACT_LIST_ANSWER, UpdateListAnswer);
-      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_DELETE_FACT_ANSWER, DeleteFactAnswer);
+      m_netMgr = p_netMgr;
+      Init();
+    }
+
+    FactsModel()
+    {
+      m_netMgr = NetworkManager.Instance;
+      Init();
+    }
+
+    void Init()
+    {
+      m_netMgr.SetCallback((UInt16)ServerMessage.SMSG_UPDATE_FACT_LIST_ANSWER, UpdateListAnswer);
+      m_netMgr.SetCallback((UInt16)ServerMessage.SMSG_DELETE_FACT_ANSWER, DeleteFactAnswer);
     }
 
     ~FactsModel()
     {
-      NetworkManager.RemoveCallback((UInt16)ServerMessage.SMSG_UPDATE_FACT_LIST_ANSWER, UpdateListAnswer);
-      NetworkManager.RemoveCallback((UInt16)ServerMessage.SMSG_DELETE_FACT_ANSWER, DeleteFactAnswer);
+      m_netMgr.RemoveCallback((UInt16)ServerMessage.SMSG_UPDATE_FACT_LIST_ANSWER, UpdateListAnswer);
+      m_netMgr.RemoveCallback((UInt16)ServerMessage.SMSG_DELETE_FACT_ANSWER, DeleteFactAnswer);
     }
 
     public Int32 GetFactRH(UInt32 p_accountId, UInt32 p_entityId, List<AxisElem> p_employeeList, UInt32 p_versionId, UInt32 p_startPeriod, UInt32 p_endPeriod)
     {
 
-      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_GET_FACT_ANSWER, GetFactAnswer);
+      m_netMgr.SetCallback((UInt16)ServerMessage.SMSG_GET_FACT_ANSWER, GetFactAnswer);
       ByteBuffer l_packet = new ByteBuffer((UInt16)ClientMessage.CMSG_GET_FACT);
       Int32 l_requestId = l_packet.AssignRequestId();
 
@@ -52,13 +65,13 @@ namespace FBI.MVC.Model
       l_packet.WriteUint32(p_entityId);
 
       l_packet.Release();
-      NetworkManager.Instance.Send(l_packet);
+      m_netMgr.Send(l_packet);
       return l_requestId;
     }
 
     public Int32 GetFactFinancial(List<AxisElem> p_entitiesList, UInt32 p_versionId, UInt32 p_clientId, UInt32 p_productId, UInt32 p_adjustmentId)
     {
-      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_GET_FACT_ANSWER, GetFactAnswer);
+      m_netMgr.SetCallback((UInt16)ServerMessage.SMSG_GET_FACT_ANSWER, GetFactAnswer);
       ByteBuffer l_packet = new ByteBuffer((UInt16)ClientMessage.CMSG_GET_FACT);
       Int32 l_requestId = l_packet.AssignRequestId();
 
@@ -72,7 +85,7 @@ namespace FBI.MVC.Model
       l_packet.WriteUint32(p_adjustmentId);
 
       l_packet.Release();
-      NetworkManager.Instance.Send(l_packet);
+      m_netMgr.Send(l_packet);
       return (l_requestId);
     }
 
@@ -91,7 +104,7 @@ namespace FBI.MVC.Model
         foreach (Fact fact_value in p_factsCommitDict.Values)
           fact_value.Dump(packet, false);
       packet.Release();
-      NetworkManager.Instance.Send(packet);
+      m_netMgr.Send(packet);
     }
 
     public void Delete(Fact p_fact)
@@ -99,7 +112,7 @@ namespace FBI.MVC.Model
       ByteBuffer l_packet = new ByteBuffer(Convert.ToUInt16(ClientMessage.CMSG_DELETE_FACT));
       l_packet.WriteUint32(p_fact.Id);
       l_packet.Release();
-      NetworkManager.Instance.Send(l_packet);
+      m_netMgr.Send(l_packet);
     }
 
     private void UpdateListAnswer(ByteBuffer packet)

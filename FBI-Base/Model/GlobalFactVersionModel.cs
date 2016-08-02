@@ -14,7 +14,18 @@ namespace FBI.MVC.Model
   {
     static GlobalFactVersionModel s_instance = new GlobalFactVersionModel();
     public static GlobalFactVersionModel Instance { get { return (s_instance); } }
-    public GlobalFactVersionModel()
+    
+    GlobalFactVersionModel() : base(false, NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public GlobalFactVersionModel(NetworkManager p_netMgr) : base(false, p_netMgr)
+    {
+      Init();
+    }
+
+    void Init()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_GLOBAL_FACT_VERSION;
       ReadCMSG = ClientMessage.CMSG_READ_GLOBAL_FACT_VERSION;

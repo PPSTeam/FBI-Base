@@ -16,15 +16,28 @@ namespace FBI.MVC.Model
     public static FactLogModel Instance { get { return (s_instance); } }
     public event ReadEventHandler ReadEvent;
     public delegate void ReadEventHandler(bool p_status, List<FactLog> p_factLogList);
+    NetworkManager m_netMgr;
 
-    public FactLogModel()
+    FactLogModel()
     {
-      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_GET_FACT_LOG_ANSWER, GetFactLogAnswer);
+      m_netMgr = NetworkManager.Instance;
+      Init();
+    }
+
+    public FactLogModel(NetworkManager p_netMgr)
+    {
+      m_netMgr = p_netMgr;
+      Init();
+    }
+
+    void Init()
+    {
+      m_netMgr.SetCallback((UInt16)ServerMessage.SMSG_GET_FACT_LOG_ANSWER, GetFactLogAnswer);
     }
 
     ~FactLogModel()
     {
-      NetworkManager.RemoveCallback((UInt16)ServerMessage.SMSG_GET_FACT_LOG_ANSWER, GetFactLogAnswer);
+      m_netMgr.RemoveCallback((UInt16)ServerMessage.SMSG_GET_FACT_LOG_ANSWER, GetFactLogAnswer);
     }
 
     public void GetFactLog(UInt32 p_accountId, UInt32 p_entityId, UInt32 p_period, UInt32 p_versionId)
@@ -37,7 +50,7 @@ namespace FBI.MVC.Model
       packet.WriteUint32(p_period);
       packet.WriteUint32(p_versionId);
       packet.Release();
-      NetworkManager.Instance.Send(packet);
+      m_netMgr.Send(packet);
     }
 
     private void GetFactLogAnswer(ByteBuffer p_packet)

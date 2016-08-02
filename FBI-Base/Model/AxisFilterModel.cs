@@ -18,7 +18,17 @@ namespace FBI.MVC.Model
     static AxisFilterModel s_instance = new AxisFilterModel();
     public static AxisFilterModel Instance { get { return (s_instance); } }
 
-    public AxisFilterModel()
+    AxisFilterModel() : base(NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public AxisFilterModel(NetworkManager p_netMgr) : base(p_netMgr)
+    {
+      Init();
+    }
+
+    void Init()
     {
       Clear();
 

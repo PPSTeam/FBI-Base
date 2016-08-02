@@ -49,30 +49,32 @@ namespace FBI.MVC.Model
 	protected delegate CRUDEntity BuildDelegate(ByteBuffer p_packet);
 
 	protected BuildDelegate Build;
+  protected NetworkManager m_netMgr;
 
-	protected ICRUDModel()
+	protected ICRUDModel(NetworkManager p_netMgr)
 	{
 		IsInit = false;
+    m_netMgr = p_netMgr;
 	}
 
 	~ICRUDModel()
 	{
-		NetworkManager.RemoveCallback((UInt16)ReadSMSG, ReadAnswer_Intern);
-    NetworkManager.RemoveCallback((UInt16)DeleteSMSG, DeleteAnswer_Intern);
-    NetworkManager.RemoveCallback((UInt16)ListSMSG, ListAnswer_Intern);
-    NetworkManager.RemoveCallback((UInt16)UpdateSMSG, UpdateAnswer_Intern);
-    NetworkManager.RemoveCallback((UInt16)UpdateListSMSG, UpdateListAnswer_Intern);
-    NetworkManager.RemoveCallback((UInt16)CreateSMSG, CreateAnswer_Intern);
+		m_netMgr.RemoveCallback((UInt16)ReadSMSG, ReadAnswer_Intern);
+    m_netMgr.RemoveCallback((UInt16)DeleteSMSG, DeleteAnswer_Intern);
+    m_netMgr.RemoveCallback((UInt16)ListSMSG, ListAnswer_Intern);
+    m_netMgr.RemoveCallback((UInt16)UpdateSMSG, UpdateAnswer_Intern);
+    m_netMgr.RemoveCallback((UInt16)UpdateListSMSG, UpdateListAnswer_Intern);
+    m_netMgr.RemoveCallback((UInt16)CreateSMSG, CreateAnswer_Intern);
 	}
 
 	protected void InitCallbacks()
 	{
-    NetworkManager.SetCallback((UInt16)ReadSMSG, ReadAnswer_Intern);
-    NetworkManager.SetCallback((UInt16)DeleteSMSG, DeleteAnswer_Intern);
-    NetworkManager.SetCallback((UInt16)ListSMSG, ListAnswer_Intern);
-    NetworkManager.SetCallback((UInt16)UpdateSMSG, UpdateAnswer_Intern);
-    NetworkManager.SetCallback((UInt16)UpdateListSMSG, UpdateListAnswer_Intern);
-    NetworkManager.SetCallback((UInt16)CreateSMSG, CreateAnswer_Intern);
+    m_netMgr.SetCallback((UInt16)ReadSMSG, ReadAnswer_Intern);
+    m_netMgr.SetCallback((UInt16)DeleteSMSG, DeleteAnswer_Intern);
+    m_netMgr.SetCallback((UInt16)ListSMSG, ListAnswer_Intern);
+    m_netMgr.SetCallback((UInt16)UpdateSMSG, UpdateAnswer_Intern);
+    m_netMgr.SetCallback((UInt16)UpdateListSMSG, UpdateListAnswer_Intern);
+    m_netMgr.SetCallback((UInt16)CreateSMSG, CreateAnswer_Intern);
 	}
 
 	protected abstract void ListAnswer(ByteBuffer p_packet);
@@ -127,7 +129,7 @@ namespace FBI.MVC.Model
 	{
 		ByteBuffer packet = new ByteBuffer(Convert.ToUInt16(ListCMSG));
 		packet.Release();
-		return NetworkManager.Instance.Send(packet);
+		return m_netMgr.Send(packet);
 	}
 
 
@@ -136,7 +138,7 @@ namespace FBI.MVC.Model
 		ByteBuffer packet = new ByteBuffer(Convert.ToUInt16(CreateCMSG));
 		p_crud.Dump(packet, false);
 		packet.Release();
-		return NetworkManager.Instance.Send(packet);
+		return m_netMgr.Send(packet);
 	}
 
 
@@ -145,7 +147,7 @@ namespace FBI.MVC.Model
 		ByteBuffer packet = new ByteBuffer(Convert.ToUInt16(UpdateCMSG));
 		p_crud.Dump(packet, true);
 		packet.Release();
-		return NetworkManager.Instance.Send(packet);
+		return m_netMgr.Send(packet);
 	}
 
 
@@ -163,7 +165,7 @@ namespace FBI.MVC.Model
 			  l_crud.Dump(packet, p_action != CRUDAction.CREATE);
 		}
 		packet.Release();
-		return NetworkManager.Instance.Send(packet);
+		return m_netMgr.Send(packet);
 	}
 
   public virtual bool Delete(UInt32 p_id)
@@ -171,7 +173,7 @@ namespace FBI.MVC.Model
 		ByteBuffer packet = new ByteBuffer(Convert.ToUInt16(DeleteCMSG));
 		packet.WriteUint32(p_id);
 		packet.Release();
-		return NetworkManager.Instance.Send(packet);
+		return m_netMgr.Send(packet);
 	}
 	#endregion
 

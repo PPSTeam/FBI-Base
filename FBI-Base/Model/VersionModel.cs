@@ -19,7 +19,17 @@ namespace FBI.MVC.Model
     public event CopyEventHandler CopyEvent;
     public delegate void CopyEventHandler(ErrorMessage p_status, UInt32 p_id);
 
-    public VersionModel()
+    VersionModel() : base(false, NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public VersionModel(NetworkManager p_netMgr) : base(false, p_netMgr)
+    {
+      Init();
+    }
+
+    void Init()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_VERSION;
       ReadCMSG = ClientMessage.CMSG_READ_VERSION;
@@ -40,12 +50,12 @@ namespace FBI.MVC.Model
       Build = Version.BuildVersion;
 
       InitCallbacks();
-      NetworkManager.SetCallback((UInt16)CopySMSG, CopyAnswer);
+      m_netMgr.SetCallback((UInt16)CopySMSG, CopyAnswer);
     }
 
     ~VersionModel()
     {
-      NetworkManager.RemoveCallback((UInt16)CopySMSG, CopyAnswer);
+      m_netMgr.RemoveCallback((UInt16)CopySMSG, CopyAnswer);
     }
 
     #region CRUD
@@ -61,7 +71,7 @@ namespace FBI.MVC.Model
       packet.WriteUint32(p_newVersion.GlobalFactVersionId);
       packet.Release();
 
-      NetworkManager.Instance.Send(packet);
+      m_netMgr.Send(packet);
     }
 
     private void CopyAnswer(ByteBuffer p_packet)

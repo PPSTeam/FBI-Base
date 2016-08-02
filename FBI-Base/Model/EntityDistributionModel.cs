@@ -18,7 +18,17 @@ namespace FBI.MVC.Model
     SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, EntityDistribution>> m_CRUDDic =
       new SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, EntityDistribution>>();
 
-    public EntityDistributionModel()
+    EntityDistributionModel() : base(NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public EntityDistributionModel(NetworkManager p_netMgr) : base(p_netMgr)
+    {
+      Init();
+    }
+
+    void Init()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_ENTITY_DISTRIBUTION;
       ReadCMSG = ClientMessage.CMSG_READ_ENTITY_DISTRIBUTION;

@@ -18,11 +18,24 @@ namespace FBI.MVC.Model
     public static LegacyComputeModel Instance { get { return (s_instance); } }
 
     SafeDictionary<Int32, Tuple<bool, Int32>> m_toDiffList;
+    NetworkManager m_netMgr;
 
-    public LegacyComputeModel() 
+    LegacyComputeModel() 
+    {
+      m_netMgr = NetworkManager.Instance;
+      Init();
+    }
+
+    public LegacyComputeModel(NetworkManager p_netMgr)
+    {
+      m_netMgr = p_netMgr;
+      Init();
+    }
+
+    void Init()
     {
       m_toDiffList = new SafeDictionary<Int32, Tuple<bool, Int32>>();
-      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_COMPUTE_RESULT, OnComputeResult);
+      m_netMgr.SetCallback((UInt16)ServerMessage.SMSG_COMPUTE_RESULT, OnComputeResult);
     }
 
     public bool ComputeDiff(LegacyComputeRequest p_request, List<Int32> p_requestIdList = null)
@@ -53,7 +66,7 @@ namespace FBI.MVC.Model
       {
         p_request.Dump(l_packetList[i], p_request.Versions[i]);
         l_packetList[i].Release();
-        if (NetworkManager.Instance.Send(l_packetList[i]) == false)
+        if (m_netMgr.Send(l_packetList[i]) == false)
           return (false);
       }
       return (true);

@@ -33,7 +33,7 @@ namespace FBI.Network
       //return false;
     }
 
-    public static void SetCallback(UInt16 p_opcodeId, Action<ByteBuffer> p_newCallback)
+    public void SetCallback(UInt16 p_opcodeId, Action<ByteBuffer> p_newCallback)
     {
       if (p_opcodeId == 0 || p_opcodeId > (byte)ServerMessage.OpcodeMax)
         return;
@@ -47,14 +47,14 @@ namespace FBI.Network
       m_callback[p_opcodeId].Add(p_newCallback);
     }
 
-    public static List<Action<ByteBuffer>> GetCallback(UInt16 p_opcodeId)
+    List<Action<ByteBuffer>> GetCallback(UInt16 p_opcodeId)
     {
       if (p_opcodeId < (byte)ServerMessage.OpcodeMax)
         return (m_callback[p_opcodeId]);
       return (null);
     }
 
-    public static void RemoveCallback(UInt16 p_opcode, Action<ByteBuffer> p_oldCallback)
+    public void RemoveCallback(UInt16 p_opcode, Action<ByteBuffer> p_oldCallback)
     {
       if (p_opcode == 0 || p_opcode > (byte)ServerMessage.OpcodeMax)
         return;
@@ -149,7 +149,7 @@ namespace FBI.Network
       return (l_header);
     }
 
-    public ByteBuffer Receive()
+    ByteBuffer Receive()
     {
       try
       {

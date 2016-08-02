@@ -17,11 +17,24 @@ namespace FBI.Network
     public const string FBIVersionId = "1.0.3";
     public event AuthenticationEventHandler AuthenticationEvent;
     public delegate void AuthenticationEventHandler(ErrorMessage p_status);
+    NetworkManager m_mgr;
 
     public Authenticator()
     {
-      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_AUTH_REQUEST_ANSWER, OnAuthRequestAnswer);
-      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_AUTH_ANSWER, OnAuthAnswer);
+      m_mgr = NetworkManager.Instance;
+      Init();
+    }
+
+    public Authenticator(NetworkManager p_mgr)
+    {
+      m_mgr = p_mgr;
+      Init();
+    }
+
+    void Init()
+    {
+      m_mgr.SetCallback((UInt16)ServerMessage.SMSG_AUTH_REQUEST_ANSWER, OnAuthRequestAnswer);
+      m_mgr.SetCallback((UInt16)ServerMessage.SMSG_AUTH_ANSWER, OnAuthAnswer);
     }
     
     public void AskAuthentication(string p_username, string p_password)
@@ -31,7 +44,7 @@ namespace FBI.Network
       m_password = (p_password != "") ? Hash.GetSHA1(p_password + p_username) : m_password;
       l_packet.WriteString(FBIVersionId);
       l_packet.Release();
-      NetworkManager.Instance.Send(l_packet);
+      m_mgr.Send(l_packet);
     }
 
     void OnAuthRequestAnswer(ByteBuffer p_packet)
@@ -50,7 +63,7 @@ namespace FBI.Network
       l_answer.WriteString(Hash.GetSHA1(m_password + l_authToken));
       l_answer.Release();
 
-      NetworkManager.Instance.Send(l_answer);
+      m_mgr.Send(l_answer);
     }
 
     void OnAuthAnswer(ByteBuffer p_packet)

@@ -15,7 +15,8 @@ namespace FBI.MVC.Model
     protected MultiIndexDictionary<UInt32, string, T> m_CRUDDic = new MultiIndexDictionary<UInt32, string, T>();
     bool m_caseSensitive;
 
-    protected NamedCRUDModel(bool p_caseSensitiveName = false)
+    protected NamedCRUDModel(bool p_caseSensitiveName = false, NetworkManager p_netMgr = null) 
+      : base(p_netMgr)
     {
       m_caseSensitive = p_caseSensitiveName;
     }

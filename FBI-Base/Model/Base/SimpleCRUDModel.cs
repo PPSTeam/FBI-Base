@@ -14,6 +14,11 @@ namespace FBI.MVC.Model
   {
     private SortedDictionary<UInt32, T> m_dic = new SortedDictionary<UInt32, T>();
 
+    protected SimpleCRUDModel(NetworkManager p_netMgr) : base(p_netMgr)
+    {
+
+    }
+
     #region "CRUD"
 
     protected override void ListAnswer(ByteBuffer packet)

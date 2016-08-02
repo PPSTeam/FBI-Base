@@ -17,7 +17,17 @@ namespace FBI.MVC.Model
 
     SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, Commit>> m_commitDic = new SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, Commit>>();
 
-    public CommitModel()
+    CommitModel() : base(NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public CommitModel(NetworkManager p_netMgr) : base(p_netMgr)
+    {
+      Init();
+    }
+
+    void Init()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_COMMIT;
       ReadCMSG = ClientMessage.CMSG_READ_COMMIT;

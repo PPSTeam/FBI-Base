@@ -14,7 +14,17 @@ namespace FBI.MVC.Model
     static AccountModel s_instance = new AccountModel();
     public static AccountModel Instance { get { return (s_instance); } }
 
-    public AccountModel()
+    AccountModel() : base(false, NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public AccountModel(NetworkManager p_netMgr) : base(false, p_netMgr)
+    {
+      Init();
+    }
+
+    public void Init()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_ACCOUNT;
       ReadCMSG = ClientMessage.CMSG_READ_ACCOUNT;

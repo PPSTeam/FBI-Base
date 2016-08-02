@@ -17,7 +17,17 @@ namespace FBI.MVC.Model
     SortedDictionary<UInt32, SafeDictionary<UInt32, ChartSettings>> m_chartDic =
       new SortedDictionary<UInt32, SafeDictionary<UInt32, ChartSettings>>();
 
-    public ChartSettingsModel()
+    ChartSettingsModel() : base(NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public ChartSettingsModel(NetworkManager p_netMgr) : base(p_netMgr)
+    {
+      Init();
+    }
+
+    void Init()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_CHART;
       DeleteCMSG = ClientMessage.CMSG_DELETE_CHART;

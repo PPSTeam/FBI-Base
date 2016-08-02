@@ -14,7 +14,7 @@ namespace FBI.MVC.Model
   {
     protected SortedDictionary<AxisType, MultiIndexDictionary<UInt32, string, T>> m_CRUDDic = new SortedDictionary<AxisType, MultiIndexDictionary<UInt32, string, T>>();
 
-    public AxedCRUDModel()
+    public AxedCRUDModel(NetworkManager p_netMgr) : base(p_netMgr)
     {
     }
 

@@ -15,7 +15,18 @@ namespace FBI.MVC.Model
     static GlobalFactDataModel s_instance = new GlobalFactDataModel();
     public static GlobalFactDataModel Instance { get { return (s_instance); } }
     private MultiIndexDictionary<UInt32, Tuple<UInt32, UInt32, UInt32>, GlobalFactData> m_globalFactDic = new MultiIndexDictionary<UInt32, Tuple<UInt32, UInt32, UInt32>, GlobalFactData>();
-    public GlobalFactDataModel()
+    
+    GlobalFactDataModel() : base(NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public GlobalFactDataModel(NetworkManager p_netMgr) : base(p_netMgr)
+    {
+      Init();
+    }
+
+    void Init()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_GLOBAL_FACT_DATA;
       ReadCMSG = ClientMessage.CMSG_READ_GLOBAL_FACT_DATA;

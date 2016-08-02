@@ -14,7 +14,18 @@ namespace FBI.MVC.Model
   {
     static FModelingAccountModel s_instance = new FModelingAccountModel();
     public static FModelingAccountModel Instance { get { return (s_instance); } }
-    public FModelingAccountModel()
+    
+    FModelingAccountModel() : base(false, NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public FModelingAccountModel(NetworkManager p_netMgr) : base(false, p_netMgr)
+    {
+      Init();
+    }
+
+    void Init()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_FMODELING_ACCOUNT;
       ReadCMSG = ClientMessage.CMSG_READ_FMODELING_ACCOUNT;

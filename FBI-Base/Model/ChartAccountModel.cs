@@ -17,7 +17,17 @@ namespace FBI.MVC.Model
     SortedDictionary<UInt32, SafeDictionary<UInt32, ChartAccount>> m_chartAccountDic =
       new SortedDictionary<UInt32, SafeDictionary<UInt32, ChartAccount>>();
 
-    public ChartAccountModel()
+    ChartAccountModel() : base(NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public ChartAccountModel(NetworkManager p_netMgr) : base(p_netMgr)
+    {
+      Init();
+    }
+
+    void Init()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_CHART_ACCOUNT;
       DeleteCMSG = ClientMessage.CMSG_DELETE_CHART_ACCOUNT;

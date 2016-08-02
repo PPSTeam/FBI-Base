@@ -21,7 +21,17 @@ namespace FBI.MVC.Model
     public event GetMainCurrencyEventHandler GetMainCurrencyEvent;
     public delegate void GetMainCurrencyEventHandler(ErrorMessage p_status, UInt32 p_id);
 
-    public CurrencyModel()
+    CurrencyModel() : base(false, NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public CurrencyModel(NetworkManager p_netMgr) : base(false, p_netMgr)
+    {
+      Init();
+    }
+
+    void Init()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_CURRENCY;
       ReadCMSG = ClientMessage.CMSG_READ_CURRENCY;
@@ -41,14 +51,14 @@ namespace FBI.MVC.Model
 
       InitCallbacks();
 
-      NetworkManager.SetCallback((ushort)ServerMessage.SMSG_GET_MAIN_CURRENCY_ANSWER, SMSG_GET_MAIN_CURRENCY_ANSWER);
-      NetworkManager.SetCallback((ushort)ServerMessage.SMSG_SET_MAIN_CURRENCY_ANSWER, SMSG_SET_MAIN_CURRENCY_ANSWER);
+      m_netMgr.SetCallback((ushort)ServerMessage.SMSG_GET_MAIN_CURRENCY_ANSWER, SMSG_GET_MAIN_CURRENCY_ANSWER);
+      m_netMgr.SetCallback((ushort)ServerMessage.SMSG_SET_MAIN_CURRENCY_ANSWER, SMSG_SET_MAIN_CURRENCY_ANSWER);
     }
 
     ~CurrencyModel()
     {
-      NetworkManager.RemoveCallback((ushort)ServerMessage.SMSG_GET_MAIN_CURRENCY_ANSWER, SMSG_GET_MAIN_CURRENCY_ANSWER);
-      NetworkManager.RemoveCallback((ushort)ServerMessage.SMSG_SET_MAIN_CURRENCY_ANSWER, SMSG_SET_MAIN_CURRENCY_ANSWER);
+      m_netMgr.RemoveCallback((ushort)ServerMessage.SMSG_GET_MAIN_CURRENCY_ANSWER, SMSG_GET_MAIN_CURRENCY_ANSWER);
+      m_netMgr.RemoveCallback((ushort)ServerMessage.SMSG_SET_MAIN_CURRENCY_ANSWER, SMSG_SET_MAIN_CURRENCY_ANSWER);
     }
 
     #region "CRUD"
@@ -137,7 +147,7 @@ namespace FBI.MVC.Model
       ByteBuffer packet = new ByteBuffer(Convert.ToUInt16(ClientMessage.CMSG_GET_MAIN_CURRENCY));
       packet.WriteUint32(id);
       packet.Release();
-      NetworkManager.Instance.Send(packet);
+      m_netMgr.Send(packet);
     }
 
     #endregion

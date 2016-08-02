@@ -17,7 +17,17 @@ namespace FBI.MVC.Model
     SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, LegalHoliday>> m_legalHolidayDic =
       new SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, LegalHoliday>>();
 
-    public LegalHolidayModel()
+    LegalHolidayModel() : base(NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public LegalHolidayModel(NetworkManager p_netMgr) : base(p_netMgr)
+    {
+      Init();
+    }
+
+    void Init()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_LEGAL_HOLIDAY;
       DeleteCMSG = ClientMessage.CMSG_DELETE_LEGAL_HOLIDAY;
@@ -59,7 +69,7 @@ namespace FBI.MVC.Model
         l_crud.Dump(l_packet, false);
       }
       l_packet.Release();
-      return NetworkManager.Instance.Send(l_packet);
+      return m_netMgr.Send(l_packet);
     }
 
     public bool Delete(UInt32 p_employeeId, UInt32 p_period)
@@ -69,7 +79,7 @@ namespace FBI.MVC.Model
       packet.WriteUint32(p_employeeId);
       packet.WriteUint32(p_period);
       packet.Release();
-      return NetworkManager.Instance.Send(packet);
+      return m_netMgr.Send(packet);
     }
 
     protected override void ListAnswer(ByteBuffer p_packet)

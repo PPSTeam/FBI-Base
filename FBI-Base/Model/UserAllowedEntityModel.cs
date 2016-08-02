@@ -17,7 +17,17 @@ namespace FBI.MVC.Model
     SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, UserAllowedEntity>> m_userAllowedEntityDic =
       new SortedDictionary<UInt32, MultiIndexDictionary<UInt32, UInt32, UserAllowedEntity>>();
 
-    public UserAllowedEntityModel()
+    UserAllowedEntityModel() : base(NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public UserAllowedEntityModel(NetworkManager p_netMgr) : base(p_netMgr)
+    {
+      Init();
+    }
+
+    void Init()
     {
       CreateCMSG = ClientMessage.CMSG_ADD_USER_ENTITY;
       DeleteCMSG = ClientMessage.CMSG_DEL_USER_ENTITY;
@@ -58,7 +68,7 @@ namespace FBI.MVC.Model
       packet.WriteUint32(p_userId);
       packet.WriteUint32(p_entityId);
       packet.Release();
-      return NetworkManager.Instance.Send(packet);
+      return m_netMgr.Send(packet);
     }
 
     protected override void ListAnswer(ByteBuffer p_packet)

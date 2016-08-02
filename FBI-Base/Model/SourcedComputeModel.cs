@@ -16,10 +16,23 @@ namespace FBI.MVC.Model
 
     static SourcedComputeModel s_instance = new SourcedComputeModel();
     public static SourcedComputeModel Instance { get { return (s_instance); } }
+    NetworkManager m_netMgr;
 
-    public SourcedComputeModel()
+    SourcedComputeModel()
     {
-      NetworkManager.SetCallback((UInt16)ServerMessage.SMSG_SOURCED_COMPUTE_RESULT, OnSourcedComputeResult);
+      m_netMgr = NetworkManager.Instance;
+      Init();
+    }
+
+    SourcedComputeModel(NetworkManager p_netMgr)
+    {
+      m_netMgr = p_netMgr;
+      Init();
+    }
+
+    void Init()
+    {
+      m_netMgr.SetCallback((UInt16)ServerMessage.SMSG_SOURCED_COMPUTE_RESULT, OnSourcedComputeResult);
     }
 
     public bool Compute(SourcedComputeRequest p_request, List<Int32> p_requestIdList = null)
@@ -42,7 +55,7 @@ namespace FBI.MVC.Model
       {
         p_request.Dump(l_packetList[i], p_request.EntityList[i]);
         l_packetList[i].Release();
-        if (NetworkManager.Instance.Send(l_packetList[i]) == false)
+        if (m_netMgr.Send(l_packetList[i]) == false)
           return (false);
       }
       return (true);

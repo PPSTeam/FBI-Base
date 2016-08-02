@@ -15,7 +15,17 @@ namespace FBI.MVC.Model
     static EntityCurrencyModel s_instance = new EntityCurrencyModel();
     public static EntityCurrencyModel Instance { get { return (s_instance); } }
 
-    public EntityCurrencyModel()
+    EntityCurrencyModel() : base(NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public EntityCurrencyModel(NetworkManager p_netMgr) : base(p_netMgr)
+    {
+      Init();
+    }
+
+    void Init()
     {
       ReadCMSG = ClientMessage.CMSG_READ_ENTITY_CURRENCY;
       UpdateCMSG = ClientMessage.CMSG_UPDATE_ENTITY_CURRENCY;

@@ -15,7 +15,17 @@ namespace FBI.MVC.Model
     static FilterModel s_instance = new FilterModel();
     public static FilterModel Instance { get { return (s_instance); } }
 
-    public FilterModel()
+    FilterModel() : base(NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public FilterModel(NetworkManager p_netMgr) : base(p_netMgr)
+    {
+      Init();
+    }
+
+    void Init()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_FILTER;
       ReadCMSG = ClientMessage.CMSG_READ_FILTER;
@@ -35,6 +45,7 @@ namespace FBI.MVC.Model
 
       InitCallbacks();
     }
+
     public UInt32 FindChildId(AxisType p_axisType, UInt32 p_id)
     {
       MultiIndexDictionary<UInt32, string, Filter> l_filterDic = this.GetDictionary(p_axisType);

@@ -15,7 +15,17 @@ namespace FBI.MVC.Model
     static FactTagModel s_instance = new FactTagModel();
     public static FactTagModel Instance { get { return (s_instance); } }
 
-    public FactTagModel()
+    FactTagModel() : base(NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public FactTagModel(NetworkManager p_netMgr) : base(p_netMgr)
+    {
+      Init();
+    }
+
+    void Init()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_FACT_TAG;
       ReadCMSG = ClientMessage.CMSG_READ_FACT_TAG;

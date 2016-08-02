@@ -17,7 +17,17 @@ namespace FBI.MVC.Model
 
     MultiIndexDictionary<UInt32, Tuple<UInt32, UInt32, UInt32>, ExchangeRate> m_CRUDDic = new MultiIndexDictionary<UInt32,Tuple<UInt32,UInt32,UInt32>,ExchangeRate>();
 
-    public ExchangeRateModel()
+    ExchangeRateModel() : base(NetworkManager.Instance)
+    {
+      Init();
+    }
+
+    public ExchangeRateModel(NetworkManager p_netMgr) : base(p_netMgr)
+    {
+      Init();
+    }
+
+    void Init()
     {
       CreateCMSG = ClientMessage.CMSG_CREATE_EXCHANGE_RATE;
       ReadCMSG = ClientMessage.CMSG_READ_EXCHANGE_RATE;
