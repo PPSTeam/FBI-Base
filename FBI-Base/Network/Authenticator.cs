@@ -38,14 +38,14 @@ namespace FBI.Network
       m_mgr.SetCallback((UInt16)ServerMessage.SMSG_AUTH_ANSWER, OnAuthAnswer);
     }
     
-    public void AskAuthentication(string p_username, string p_password)
+    public bool AskAuthentication(string p_username, string p_password)
     {
       ByteBuffer l_packet = new ByteBuffer((UInt16)ClientMessage.CMSG_AUTH_REQUEST);
       Username = (p_username != "") ? p_username : Username;
       m_password = (p_password != "") ? Hash.GetSHA1(p_password + p_username) : m_password;
       l_packet.WriteString(FBIVersionId);
       l_packet.Release();
-      m_mgr.Send(l_packet);
+      return m_mgr.Send(l_packet);
     }
 
     void OnAuthRequestAnswer(ByteBuffer p_packet)
