@@ -18,16 +18,19 @@ namespace FBI.MVC.Model
     public static SourcedComputeModel Instance 
     { get { return (s_instance == null) ? s_instance = new SourcedComputeModel() : s_instance; } }
     NetworkManager m_netMgr;
+    VersionModel m_versionModel;
 
     SourcedComputeModel()
     {
       m_netMgr = NetworkManager.Instance;
+      m_versionModel = VersionModel.Instance;
       Init();
     }
 
-    SourcedComputeModel(NetworkManager p_netMgr)
+    SourcedComputeModel(NetworkManager p_netMgr, VersionModel p_versionModel)
     {
       m_netMgr = p_netMgr;
+      m_versionModel = p_versionModel;
       Init();
     }
 
@@ -74,7 +77,7 @@ namespace FBI.MVC.Model
         SourcedComputeRequest l_request = l_requestTuple.Item1 as SourcedComputeRequest;
 
         l_requestIdList.Remove(l_requestId);
-        l_result = ComputeResult.BuildSourcedComputeResult(l_request, p_packet, m_requestAxisList[l_requestId]);
+        l_result = ComputeResult.BuildSourcedComputeResult(l_request, p_packet, m_requestAxisList[l_requestId], m_versionModel.GetValue(l_request.VersionId));
         m_requestAxisList.Remove(l_requestId);
         l_result.RequestId = l_requestId;
         m_resultDic[l_request][l_result.EntityId] = l_result;

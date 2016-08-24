@@ -32,28 +32,28 @@ namespace FBI.MVC.Model.CRUD
       IsDiff = false;
     }
 
-    public static ComputeResult BuildComputeResult(LegacyComputeRequest p_request, ByteBuffer p_packet, UInt32 p_versionId)
+    public static ComputeResult BuildComputeResult(LegacyComputeRequest p_request, ByteBuffer p_packet, Version p_version)
     {
-      ComputeResult l_result = BaseBuildComputeResult(p_request, p_packet, p_versionId, p_request.EntityId);
+      ComputeResult l_result = BaseBuildComputeResult(p_request, p_packet, p_version, p_request.EntityId);
       l_result.FillResultData(p_packet, "", p_request.IsPeriodDiff);
       return (l_result);
     }
 
-    public static ComputeResult BuildSourcedComputeResult(SourcedComputeRequest p_request, ByteBuffer p_packet, UInt32 p_entityId)
+    public static ComputeResult BuildSourcedComputeResult(SourcedComputeRequest p_request, ByteBuffer p_packet, UInt32 p_entityId, Version p_version)
     {
-      ComputeResult l_result = BaseBuildComputeResult(p_request, p_packet, p_request.VersionId, p_entityId);
+      ComputeResult l_result = BaseBuildComputeResult(p_request, p_packet, p_version, p_entityId);
       l_result.FillEntityData(p_packet, "", "");
       return (l_result);
     }
 
-    static ComputeResult BaseBuildComputeResult(AComputeRequest p_request, ByteBuffer p_packet, UInt32 p_versionId, UInt32 p_entityId)
+    static ComputeResult BaseBuildComputeResult(AComputeRequest p_request, ByteBuffer p_packet, Version p_version, UInt32 p_entityId)
     {
       ComputeResult l_result = new ComputeResult();
 
       l_result.EntityId = p_entityId;
-      l_result.VersionId = p_versionId;
+      l_result.VersionId = p_version.Id;
       l_result.m_request = p_request;
-      l_result.m_version = VersionModel.Instance.GetValue(l_result.VersionId);
+      l_result.m_version = p_version;
 
       if (p_request.Process == Account.AccountProcess.RH || l_result.m_version == null)
         l_result.m_periodList = PeriodModel.GetPeriodList((Int32)p_request.StartPeriod, (Int32)p_request.NbPeriods, l_result.m_version.TimeConfiguration);

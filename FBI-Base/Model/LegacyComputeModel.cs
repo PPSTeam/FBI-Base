@@ -20,16 +20,19 @@ namespace FBI.MVC.Model
 
     SafeDictionary<Int32, Tuple<bool, Int32>> m_toDiffList;
     NetworkManager m_netMgr;
+    VersionModel m_versionModel;
 
     LegacyComputeModel() 
     {
       m_netMgr = NetworkManager.Instance;
+      m_versionModel = VersionModel.Instance;
       Init();
     }
 
-    public LegacyComputeModel(NetworkManager p_netMgr)
+    public LegacyComputeModel(NetworkManager p_netMgr, VersionModel p_versionModel)
     {
       m_netMgr = p_netMgr;
+      m_versionModel = p_versionModel;
       Init();
     }
 
@@ -96,7 +99,7 @@ namespace FBI.MVC.Model
       if (l_request != null)
       {
         l_requestIdList.Remove(l_requestId);
-        l_result = ComputeResult.BuildComputeResult(l_request, p_packet, m_requestAxisList[l_requestId]);
+        l_result = ComputeResult.BuildComputeResult(l_request, p_packet, m_versionModel.GetValue(m_requestAxisList[l_requestId]));
         l_result.RequestId = l_requestId;
         m_requestAxisList.Remove(l_requestId);
         m_resultDic[l_request][l_result.VersionId] = l_result;
